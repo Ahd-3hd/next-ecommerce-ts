@@ -5,12 +5,16 @@ export const Wrapper = styled.header`
 
   @media (min-width: ${({ theme: { breakpoints } }) => breakpoints.md}) {
     display: grid;
-    grid-template-columns: 1.5fr 1fr;
-    grid-gap: 1rem;
+    grid-template-columns: 1.8fr 1fr;
+    grid-gap: 2rem;
   }
 `;
 
-export const Column = styled.div``;
+export const Column = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`;
 
 export const Collection = styled.a`
   display: block;
@@ -80,7 +84,7 @@ export const ColumnBottomWrapper = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 1rem;
-    margin-top: 1rem;
+    margin-top: 2rem;
   }
 `;
 export const ColumnBottomContainer = styled.a`
@@ -115,11 +119,68 @@ export const ColumnBottomContainerText = styled.p<{ big?: boolean }>`
   }
   font-size: ${({ big }) => (big ? "2rem" : "1rem")};
   margin: 1rem 0;
+  letter-spacing: 1px;
 `;
 export const NewsletterContainer = styled.div`
   height: 300px;
   background: linear-gradient(to right, #fd746c, #ff9068);
 `;
 
-export const SalesContainer = styled.div``;
-export const SneakersContainer = styled.div``;
+export const SalesContainer = styled.a`
+  background: url("/imgs/sales.jpg") no-repeat;
+  background-size: 100%;
+  background-position: center;
+  height: 300px;
+  position: relative;
+
+  ::after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  transition: background-size 0.6s ease;
+  :hover {
+    background-size: 120%;
+  }
+`;
+
+export const SalesText = styled.p<{ big?: boolean }>`
+  color: #fff;
+  z-index: 3;
+  font-weight: 600;
+  font-size: ${({ big }) => (big ? "2rem" : "0.95rem")};
+  letter-spacing: 1px;
+`;
+export const SneakersContainer = styled.a`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: url("/imgs/sneakers.jpg") no-repeat;
+  background-size: 160%;
+  background-position: center;
+  height: 300px;
+  transition: background-size 0.6s ease;
+  position: relative;
+  :hover {
+    background-size: 180%;
+  }
+  ::after {
+    content: "";
+    background: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+  }
+`;

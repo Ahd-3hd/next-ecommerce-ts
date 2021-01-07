@@ -13,6 +13,7 @@ import {
   ColumnBottomContainerText,
   SalesContainer,
   SneakersContainer,
+  SalesText,
 } from "./index.style";
 import Link from "next/link";
 import ArrowRightIcon from "../../svg/ArrowRightIcon.svg";
@@ -53,8 +54,21 @@ const Header = () => {
         </ColumnBottomWrapper>
       </Column>
       <Column>
-        <SalesContainer></SalesContainer>
-        <SneakersContainer></SneakersContainer>
+        <Link href="/sales" passHref>
+          <SalesContainer>
+            <SalesText>ENJOY AN EXTRA</SalesText>
+            <SalesText big>50% OFF</SalesText>
+            <SalesText>Summer Styles</SalesText>
+          </SalesContainer>
+        </Link>
+        <Link href="/sneakers" passHref>
+          <SneakersContainer>
+            <SalesText big>Men's Sneakers</SalesText>
+            <SalesText>
+              Shop Now <ArrowRightIcon />
+            </SalesText>
+          </SneakersContainer>
+        </Link>
       </Column>
     </Wrapper>
   );
