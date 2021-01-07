@@ -11,6 +11,10 @@ export const TopBar = styled.div`
   align-items: center;
   justify-content: space-between;
 `;
+export const BottomBar = styled.div`
+  display: flex;
+  margin-top: 0.7rem;
+`;
 export const Logo = styled.a`
   flex: 1;
   font-weight: ${({ theme: { fontWeights } }) => fontWeights.bold};
@@ -98,6 +102,96 @@ export const MobileMenuList = styled.ul<{ toggleMenu: boolean }>`
   justify-content: space-evenly;
   @media (min-width: ${({ theme: { breakpoints } }) => breakpoints.md}) {
     display: none;
+  }
+`;
+
+export const BrowseCategoriesButton = styled.a`
+  flex: 1;
+  background: ${({ theme: { colors } }) => colors.primary};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 3rem;
+  > svg {
+    fill: #ffffff;
+    width: 16px;
+  }
+`;
+export const BrowseCategoriesSpan = styled.span`
+  font-size: ${({ theme: { fontSizes } }) => fontSizes.md};
+  color: #ffffff;
+  font-weight: 500;
+  display: none;
+  margin-left: 1rem;
+
+  @media (min-width: ${({ theme: { breakpoints } }) => breakpoints.md}) {
+    display: inline;
+  }
+`;
+export const SearchForm = styled.form`
+  flex: 3;
+  display: flex;
+`;
+export const SearchField = styled.input`
+  flex: 4;
+  border: 1px solid ${({ theme: { colors } }) => `${colors.primary}11`};
+  padding-left: 1rem;
+  outline: none;
+  ::placeholder {
+    font-weight: 500;
+    color: ${({ theme: { colors } }) => `${colors.primary}33`};
+    font-family: inherit;
+  }
+  color: ${({ theme: { colors } }) => colors.primary};
+  font-weight: 600;
+`;
+export const DropdownWrapper = styled.div`
+  position: relative;
+  flex: 2;
+  border: 1px solid ${({ theme: { colors } }) => `${colors.primary}11`};
+  background: #ffffff;
+  display: none;
+  @media (min-width: ${({ theme: { breakpoints } }) => breakpoints.md}) {
+    display: inline;
+  }
+  ::after {
+    content: ">";
+    position: absolute;
+    right: 0.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.2rem;
+    pointer-events: none;
+  }
+`;
+export const CategoriesDropDown = styled.select`
+  height: 100%;
+  width: 100%;
+  background: #ffffff;
+  border: none;
+  color: ${({ theme: { colors } }) => colors.primary};
+  font-weight: 700;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+  text-overflow: "";
+  padding: 0 1rem;
+`;
+export const DropdownOptions = styled.option`
+  color: ${({ theme: { colors } }) => colors.primary};
+  font-weight: 700;
+`;
+export const SearchButton = styled.button`
+  flex: 2;
+  background: none;
+  border: 1px solid ${({ theme: { colors } }) => `${colors.primary}11`};
+  cursor: pointer;
+  > svg {
+    width: 20px;
+    fill: ${({ theme: { colors } }) => colors.primary};
+  }
+  @media (min-width: ${({ theme: { breakpoints } }) => breakpoints.md}) {
+    flex: 1;
   }
 `;
 

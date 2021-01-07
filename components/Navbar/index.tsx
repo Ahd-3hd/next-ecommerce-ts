@@ -6,8 +6,19 @@ import {
   UserButtons,
   MenuButton,
   MobileMenu,
+  BottomBar,
+  BrowseCategoriesButton,
+  SearchField,
+  CategoriesDropDown,
+  SearchButton,
+  SearchForm,
+  BrowseCategoriesSpan,
+  DropdownOptions,
+  DropdownWrapper,
 } from "./index.style";
 import MenuIcon from "../../svg/MenuIcon.svg";
+import CategoriesIcon from "../../svg/CategoriesIcon.svg";
+import SearchIcon from "../../svg/SearchIcon.svg";
 import { useState } from "react";
 import Link from "next/link";
 
@@ -26,6 +37,29 @@ const Navbar = () => {
         </MenuButton>
       </TopBar>
       <MobileMenu toggleMenu={toggleMenu} />
+      <BottomBar>
+        <Link href="/categories" passHref>
+          <BrowseCategoriesButton>
+            <CategoriesIcon />
+            <BrowseCategoriesSpan>Browse Categories</BrowseCategoriesSpan>
+          </BrowseCategoriesButton>
+        </Link>
+        <SearchForm>
+          <SearchField placeholder="Search for items or brands" />
+          <DropdownWrapper>
+            <CategoriesDropDown>
+              <DropdownOptions>All Categories</DropdownOptions>
+              <DropdownOptions>Shirts</DropdownOptions>
+              <DropdownOptions>Dresses</DropdownOptions>
+              <DropdownOptions>Shoes</DropdownOptions>
+              <DropdownOptions>Pants</DropdownOptions>
+            </CategoriesDropDown>
+          </DropdownWrapper>
+          <SearchButton>
+            <SearchIcon />
+          </SearchButton>
+        </SearchForm>
+      </BottomBar>
     </Container>
   );
 };
