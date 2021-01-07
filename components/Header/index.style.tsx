@@ -149,6 +149,7 @@ export const NewsletterButton = styled.button`
   border-left: none;
   color: #fff;
   font-size: 1.1rem;
+  cursor: pointer;
 `;
 
 export const SalesContainer = styled.a`
@@ -181,6 +182,13 @@ export const SalesText = styled.p<{ big?: boolean }>`
   font-weight: 600;
   font-size: ${({ big }) => (big ? "2rem" : "0.95rem")};
   letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  > svg {
+    fill: #fff;
+    width: 20px;
+    margin-left: 1rem;
+  }
 `;
 export const SneakersContainer = styled.a`
   display: flex;
