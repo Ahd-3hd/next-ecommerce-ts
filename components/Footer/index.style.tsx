@@ -105,4 +105,17 @@ export const BlobContainer = styled.div<{ reverse?: boolean }>`
     width: 320px;
     fill: rgba(255, 255, 255, 0.1);
   }
+  pointer-events: none;
+  z-index: 0;
+`;
+
+export const Copyrights = styled.p`
+  color: #fff;
+  text-align: center;
+  margin-top: 2rem;
+  margin-bottom: 0rem;
+  font-size: 0.6rem;
+  > a {
+    color: ${({ theme: { colors } }) => colors.secondary};
+  }
 `;

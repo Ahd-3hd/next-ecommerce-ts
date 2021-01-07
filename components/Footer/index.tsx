@@ -20,6 +20,7 @@ import {
   SocialLinksContainer,
   SocialLink,
   BlobContainer,
+  Copyrights,
 } from "./index.style";
 
 const DeliveryFeatures = [
@@ -108,6 +109,10 @@ const Footer = () => {
         <BlobContainer reverse>
           <FooterBlobOne />
         </BlobContainer>
+        <Copyrights>
+          Coded By <a href="https://github.com/Zeus3hd">Ahd Hani</a>{" "}
+          {new Date().getFullYear()}
+        </Copyrights>
       </BottomFooter>
     </Wrapper>
   );
