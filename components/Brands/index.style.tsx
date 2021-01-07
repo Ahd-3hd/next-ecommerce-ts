@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Wrapper = styled.div`
   margin-top: 5rem;
   background: ${({ theme: { colors } }) => colors.grey};
-  padding: 2rem 0;
+  padding: 7rem 0;
 `;
 
 export const Title = styled.p`
