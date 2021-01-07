@@ -107,7 +107,7 @@ export const ColumnBottomContainer = styled.a`
     position: absolute;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.3);
+    background: rgba(0, 0, 0, 0.1);
   }
 `;
 export const ColumnBottomContainerText = styled.p<{ big?: boolean }>`
@@ -128,7 +128,7 @@ export const NewsletterContainer = styled.div`
 
 export const SalesContainer = styled.a`
   background: url("/imgs/sales.jpg") no-repeat;
-  background-size: 100%;
+  background-size: 190%;
   background-position: center;
   height: 300px;
   position: relative;
@@ -137,7 +137,7 @@ export const SalesContainer = styled.a`
     content: "";
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.2);
     position: absolute;
     left: 0;
     top: 0;
@@ -165,18 +165,19 @@ export const SneakersContainer = styled.a`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  text-align: center;
   background: url("/imgs/sneakers.jpg") no-repeat;
-  background-size: 160%;
+  background-size: 120%;
   background-position: center;
   height: 300px;
   transition: background-size 0.6s ease;
   position: relative;
   :hover {
-    background-size: 180%;
+    background-size: 120%;
   }
   ::after {
     content: "";
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.2);
     position: absolute;
     width: 100%;
     height: 100%;
