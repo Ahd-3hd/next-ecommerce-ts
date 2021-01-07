@@ -14,6 +14,10 @@ import {
   SalesContainer,
   SneakersContainer,
   SalesText,
+  NewsletterText,
+  NewsletterForm,
+  NewsletterInput,
+  NewsletterButton,
 } from "./index.style";
 import Link from "next/link";
 import ArrowRightIcon from "../../svg/ArrowRightIcon.svg";
@@ -40,7 +44,18 @@ const Header = () => {
           </Collection>
         </Link>
         <ColumnBottomWrapper>
-          <NewsletterContainer></NewsletterContainer>
+          <NewsletterContainer>
+            <NewsletterText big>Subscribe to Newsletter</NewsletterText>
+            <NewsletterText>
+              Receive an exclusive 10% discount code
+              <br />
+              when you signup
+            </NewsletterText>
+            <NewsletterForm>
+              <NewsletterInput type="email" placeholder="Enter Email" />
+              <NewsletterButton>Subscribe</NewsletterButton>
+            </NewsletterForm>
+          </NewsletterContainer>
           <Link href="/watches" passHref>
             <ColumnBottomContainer>
               <ColumnBottomContainerText big>

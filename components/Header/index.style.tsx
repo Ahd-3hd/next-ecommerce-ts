@@ -117,6 +117,38 @@ export const ColumnBottomContainerText = styled.p<{ big?: boolean }>`
 export const NewsletterContainer = styled.div`
   height: 300px;
   background: linear-gradient(to right, #fd746c, #ff9068);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const NewsletterForm = styled.form`
+  display: flex;
+`;
+export const NewsletterInput = styled.input`
+  flex: 2;
+  height: 2.9rem;
+  background: transparent;
+  border: 2px solid #fff;
+  border-right: none;
+  padding-left: 1rem;
+  font-weight: 600;
+  outline: none;
+  color: #fff;
+  ::placeholder {
+    color: #fff;
+  }
+`;
+export const NewsletterButton = styled.button`
+  flex: 1;
+  height: 2.9rem;
+  background: transparent;
+  border: 2px solid #fff;
+  border-left: none;
+  color: #fff;
+  font-size: 1.1rem;
 `;
 
 export const SalesContainer = styled.a`
@@ -171,4 +203,10 @@ export const SneakersContainer = styled.a`
     top: 0;
     left: 0;
   }
+`;
+
+export const NewsletterText = styled.p<{ big?: boolean }>`
+  color: #fff;
+  font-size: ${({ big }) => (big ? "1.5rem" : "1rem")};
+  text-align: center;
 `;
