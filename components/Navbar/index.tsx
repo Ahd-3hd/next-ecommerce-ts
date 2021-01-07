@@ -9,13 +9,16 @@ import {
 } from "./index.style";
 import MenuIcon from "../../svg/MenuIcon.svg";
 import { useState } from "react";
+import Link from "next/link";
 
 const Navbar = () => {
   const [toggleMenu, setToggleMenu] = useState(false);
   return (
     <Container>
       <TopBar>
-        <Logo>Shopper.</Logo>
+        <Link href="/" passHref>
+          <Logo>Shopper.</Logo>
+        </Link>
         <DesktopMenu />
         <UserButtons />
         <MenuButton onClick={() => setToggleMenu((prevState) => !prevState)}>

@@ -11,7 +11,7 @@ export const TopBar = styled.div`
   align-items: center;
   justify-content: space-between;
 `;
-export const Logo = styled.p`
+export const Logo = styled.a`
   flex: 1;
   font-weight: ${({ theme: { fontWeights } }) => fontWeights.bold};
   color: ${({ theme: { colors } }) => colors.primary};
