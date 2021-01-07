@@ -186,12 +186,20 @@ export const SearchButton = styled.button`
   background: none;
   border: 1px solid ${({ theme: { colors } }) => `${colors.primary}11`};
   cursor: pointer;
+  transition: background-color 0.4s ease;
   > svg {
     width: 20px;
+    transition: fill 0.4s ease;
     fill: ${({ theme: { colors } }) => colors.primary};
   }
   @media (min-width: ${({ theme: { breakpoints } }) => breakpoints.md}) {
     flex: 1;
+  }
+  :hover {
+    background: ${({ theme: { colors } }) => colors.primary};
+    > svg {
+      fill: #ffffff;
+    }
   }
 `;
 
