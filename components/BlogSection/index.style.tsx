@@ -29,7 +29,7 @@ export const Container = styled.div`
 `;
 
 export const BlogCard = styled.div`
-  height: 500px;
+  height: 450px;
   display: flex;
   flex-direction: column;
   background: #fff;
@@ -48,6 +48,8 @@ export const BlogDetails = styled.div`
 export const BlogTitle = styled.p`
   font-weight: 600;
   color: ${({ theme: { colors } }) => colors.primary};
+  max-width: 40ch;
+  font-size: 1.2rem;
 `;
 export const BlogDescription = styled.p`
   font-size: 0.95rem;
@@ -60,15 +62,17 @@ export const BlogDate = styled.p`
   margin: 0;
   background: #fff;
   color: ${({ theme: { colors } }) => colors.primary};
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 0.7rem;
   font-weight: bold;
   text-transform: uppercase;
+  font-size: 0.9rem;
 `;
 export const BlogLink = styled.a`
   font-size: 0.95rem;
   padding-bottom: 0.3rem;
   color: ${({ theme: { colors } }) => colors.primary};
   border-bottom: 1px solid ${({ theme: { colors } }) => colors.primary};
+  font-weight: 500;
   > svg {
     width: 20px;
     fill: ${({ theme: { colors } }) => colors.primary};
