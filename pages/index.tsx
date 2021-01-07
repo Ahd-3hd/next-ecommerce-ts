@@ -1,4 +1,5 @@
 import Header from "../components/Header";
+import NewArrivals from "../components/NewArrivals";
 import Head from "next/head";
 export default function Home() {
   return (
@@ -7,6 +8,7 @@ export default function Home() {
         <title>Home</title>
       </Head>
       <Header />
+      <NewArrivals />
     </>
   );
 }
