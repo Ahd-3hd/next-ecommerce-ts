@@ -1,6 +1,7 @@
+import Head from "next/head";
 import Header from "../components/Header";
 import NewArrivals from "../components/NewArrivals";
-import Head from "next/head";
+import CollectionSection from "../components/CollectionSection";
 export default function Home() {
   return (
     <>
@@ -9,6 +10,7 @@ export default function Home() {
       </Head>
       <Header />
       <NewArrivals />
+      <CollectionSection />
     </>
   );
 }
