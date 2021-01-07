@@ -17,7 +17,6 @@ export const Logo = styled.a`
   color: ${({ theme: { colors } }) => colors.primary};
   font-size: ${({ theme: { fontSizes } }) => fontSizes.xl};
   text-shadow: 0px 0px 1px ${({ theme: { colors } }) => colors.primary};
-  text-align: center;
   margin: 0.7rem 0;
 `;
 export const DesktopMenuList = styled.ul`
