@@ -4,7 +4,13 @@ export const Wrapper = styled.div`
   margin-top: 2rem;
 `;
 
-export const BlogSectionHeader = styled.div``;
+export const BlogSectionHeader = styled.div`
+  @media (min-width: ${({ theme: { breakpoints } }) => breakpoints.md}) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+`;
 
 export const Title = styled.p`
   font-size: 2rem;
