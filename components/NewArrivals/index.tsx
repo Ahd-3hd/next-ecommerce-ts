@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Wrapper, Title, Container } from "./index.style";
+import { Wrapper, Title, Container, DiscoverLink } from "./index.style";
 import ProductCard from "../ProductCard";
 
 const productsDummy = [
@@ -101,6 +101,9 @@ const NewArrivals = () => {
           />
         ))}
       </Container>
+      <Link href="/shop" passHref>
+        <DiscoverLink>Discover More</DiscoverLink>
+      </Link>
     </Wrapper>
   );
 };

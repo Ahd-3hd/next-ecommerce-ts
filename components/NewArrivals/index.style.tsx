@@ -2,6 +2,8 @@ import styled from "styled-components";
 
 export const Wrapper = styled.div`
   margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
 `;
 export const Title = styled.p`
   text-align: center;
@@ -20,4 +22,12 @@ export const Container = styled.div`
     grid-template-columns: repeat(5, 1fr);
     grid-gap: 2rem;
   }
+`;
+
+export const DiscoverLink = styled.a`
+  margin: 1rem 0;
+  text-align: center;
+  padding: 0.5rem 0;
+  border-bottom: 2px solid ${({ theme: { colors } }) => colors.primary};
+  align-self: center;
 `;
