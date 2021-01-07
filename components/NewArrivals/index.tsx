@@ -91,14 +91,14 @@ const NewArrivals = () => {
       <Title>New Arrivals</Title>
       <Container>
         {productsDummy.map((item) => (
-          <Link key={item.id} href={`/product/${item.id}`} passHref>
-            <ProductCard
-              img={item.img}
-              title={item.title}
-              price={item.price}
-              rating={item.rating}
-            />
-          </Link>
+          <ProductCard
+            key={item.id}
+            id={item.id}
+            img={item.img}
+            title={item.title}
+            price={item.price}
+            rating={item.rating}
+          />
         ))}
       </Container>
     </Wrapper>
