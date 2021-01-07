@@ -18,15 +18,11 @@ export const Column = styled.div`
 
 export const Collection = styled.a`
   display: block;
-  height: 300px;
+  height: 450px;
   background: url("/imgs/collection.jpg") no-repeat;
-  background-size: 100%;
+  background-size: cover;
   background-position: center;
   position: relative;
-  transition: background-size 0.6s ease;
-  :hover {
-    background-size: 120%;
-  }
 `;
 
 export const CollectionTag = styled.div`
@@ -96,12 +92,9 @@ export const ColumnBottomContainer = styled.a`
   height: 300px;
   background: url("/imgs/watch.jpg") no-repeat;
   background-position: center;
-  background-size: 100%;
-  transition: background-size 0.6s ease;
+  background-size: cover;
   position: relative;
-  :hover {
-    background-size: 120%;
-  }
+
   ::after {
     content: "";
     position: absolute;
@@ -128,9 +121,9 @@ export const NewsletterContainer = styled.div`
 
 export const SalesContainer = styled.a`
   background: url("/imgs/sales.jpg") no-repeat;
-  background-size: 190%;
+  background-size: cover;
   background-position: center;
-  height: 300px;
+  height: 450px;
   position: relative;
 
   ::after {
@@ -148,9 +141,6 @@ export const SalesContainer = styled.a`
   justify-content: center;
   text-align: center;
   transition: background-size 0.6s ease;
-  :hover {
-    background-size: 120%;
-  }
 `;
 
 export const SalesText = styled.p<{ big?: boolean }>`
@@ -167,14 +157,11 @@ export const SneakersContainer = styled.a`
   justify-content: center;
   text-align: center;
   background: url("/imgs/sneakers.jpg") no-repeat;
-  background-size: 120%;
+  background-size: cover;
   background-position: center;
   height: 300px;
   transition: background-size 0.6s ease;
   position: relative;
-  :hover {
-    background-size: 120%;
-  }
   ::after {
     content: "";
     background: rgba(0, 0, 0, 0.2);
