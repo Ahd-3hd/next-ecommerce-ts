@@ -1,16 +1,18 @@
 import {
   Wrapper,
-  FirstRow,
-  SecondRow,
+  Column,
   Collection,
-  Sales,
   CollectionTag,
-  TagSpan,
+  CollectionSpan,
   CollectionCard,
   CollectionCardTitle,
   CollectionCardLink,
-  CollectionCardLinkSpan,
-  SalesText,
+  ColumnBottomContainer,
+  NewsletterContainer,
+  ColumnBottomWrapper,
+  ColumnBottomContainerText,
+  SalesContainer,
+  SneakersContainer,
 } from "./index.style";
 import Link from "next/link";
 import ArrowRightIcon from "../../svg/ArrowRightIcon.svg";
@@ -18,34 +20,42 @@ import ArrowRightIcon from "../../svg/ArrowRightIcon.svg";
 const Header = () => {
   return (
     <Wrapper>
-      <FirstRow>
+      <Column>
         <Link href="/collection" passHref>
           <Collection>
             <CollectionTag>
-              <TagSpan>Save</TagSpan>
-              <TagSpan big>30%</TagSpan>
+              <CollectionSpan>save</CollectionSpan>
+              <CollectionSpan big>30%</CollectionSpan>
             </CollectionTag>
             <CollectionCard>
               <CollectionCardTitle>
-                New 2021 Summer
-                <br /> Collection
+                New 2021 Summer <br />
+                collection
               </CollectionCardTitle>
               <CollectionCardLink>
-                <CollectionCardLinkSpan>Shop Now</CollectionCardLinkSpan>
-                <ArrowRightIcon />
+                Shop Now <ArrowRightIcon />
               </CollectionCardLink>
             </CollectionCard>
           </Collection>
         </Link>
-        <Link href="/sales" passHref>
-          <Sales>
-            <SalesText fontSize="1.1rem">ENJOY AN EXTRA</SalesText>
-            <SalesText fontSize="4rem">50% OFF</SalesText>
-            <SalesText fontSize="1.2rem">Summer Styles</SalesText>
-          </Sales>
-        </Link>
-      </FirstRow>
-      <SecondRow></SecondRow>
+        <ColumnBottomWrapper>
+          <NewsletterContainer></NewsletterContainer>
+          <Link href="/watches" passHref>
+            <ColumnBottomContainer>
+              <ColumnBottomContainerText big>
+                Watch Collection
+              </ColumnBottomContainerText>
+              <ColumnBottomContainerText>
+                Shop Now <ArrowRightIcon />
+              </ColumnBottomContainerText>
+            </ColumnBottomContainer>
+          </Link>
+        </ColumnBottomWrapper>
+      </Column>
+      <Column>
+        <SalesContainer></SalesContainer>
+        <SneakersContainer></SneakersContainer>
+      </Column>
     </Wrapper>
   );
 };

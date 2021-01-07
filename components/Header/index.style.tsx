@@ -2,120 +2,124 @@ import styled from "styled-components";
 
 export const Wrapper = styled.header`
   margin-top: 2rem;
-`;
 
-export const FirstRow = styled.div`
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-gap: 1rem;
   @media (min-width: ${({ theme: { breakpoints } }) => breakpoints.md}) {
-    grid-template-columns: 1.7fr 1fr;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    grid-gap: 1rem;
   }
 `;
-export const SecondRow = styled.div``;
+
+export const Column = styled.div``;
 
 export const Collection = styled.a`
+  display: block;
+  height: 300px;
+  background: url("/imgs/collection.jpg") no-repeat;
+  background-size: 100%;
+  background-position: center;
   position: relative;
-  height: 500px;
-  ::after {
-    content: "";
-    background: url("/imgs/collection.jpg") no-repeat;
-    background-position: center;
-    background-size: 100%;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    transition: background-size 0.7s ease;
-  }
+  transition: background-size 0.6s ease;
   :hover {
-    ::after {
-      background-size: 120%;
-    }
+    background-size: 120%;
   }
 `;
 
 export const CollectionTag = styled.div`
-  position: absolute;
-  z-index: 2;
-  background: ${({ theme: { colors } }) => colors.secondary};
-  width: 5rem;
-  height: 5rem;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  border-radius: 100%;
-  right: 0.5rem;
-  top: 0.5rem;
-  color: #ffffff;
+  align-items: center;
   text-align: center;
+  color: #fff;
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin: 0.6rem;
+  height: 5.5rem;
+  width: 5.5rem;
+  background: ${({ theme: { colors } }) => colors.secondary};
+  border-radius: 5rem;
 `;
-export const TagSpan = styled.span<{ big?: boolean }>`
-  font-size: ${({ big }) => (big ? "1.5rem" : "1rem")};
-  font-weight: ${({ big }) => (big ? "700" : "400")};
+export const CollectionSpan = styled.span<{ big?: boolean }>`
+  font-size: ${({ big }) => (big ? "1.3rem" : "1rem")};
+  font-weight: ${({ big }) => (big ? "600" : "500")};
 `;
 
 export const CollectionCard = styled.div`
-  position: absolute;
-  bottom: 0;
+  display: block;
   background: #fff;
-  z-index: 2;
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  left: 0;
+  bottom: 0;
   margin: 0.5rem;
-  width: 60%;
-  padding: 1rem;
-  box-shadow: 0px 0px 3px ${({ theme: { colors } }) => `${colors.primary}11`};
+  width: 70%;
+  padding: 0.6rem;
 `;
 export const CollectionCardTitle = styled.p`
+  font-size: 1.4rem;
+  color: ${({ theme: { colors } }) => colors.primary};
   font-weight: 600;
-  letter-spacing: 1.5px;
-  color: ${({ theme: { colors } }) => colors.primary};
-  font-size: 1.5rem;
 `;
-
 export const CollectionCardLink = styled.p`
-  color: ${({ theme: { colors } }) => colors.primary};
-  font-weight: 500;
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  margin: 0;
+  color: ${({ theme: { colors } }) => colors.primary};
+
   > svg {
-    width: 20px;
+    width: 25px;
     fill: ${({ theme: { colors } }) => colors.primary};
-    margin-left: 2rem;
   }
 `;
-export const CollectionCardLinkSpan = styled.span``;
 
-export const Sales = styled.a`
-  position: relative;
-  height: 500px;
-  background: url("/imgs/sales.jpg") no-repeat;
-  background-position: center;
-  background-size: 120%;
-  transition: background-size 0.7s ease;
+export const ColumnBottomWrapper = styled.div`
+  @media (min-width: ${({ theme: { breakpoints } }) => breakpoints.md}) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1rem;
+    margin-top: 1rem;
+  }
+`;
+export const ColumnBottomContainer = styled.a`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  ::before {
+  height: 300px;
+  background: url("/imgs/watch.jpg") no-repeat;
+  background-position: center;
+  background-size: 100%;
+  transition: background-size 0.6s ease;
+  position: relative;
+  :hover {
+    background-size: 120%;
+  }
+  ::after {
     content: "";
-    background: rgba(0, 0, 0, 0.3);
+    position: absolute;
     width: 100%;
     height: 100%;
-    position: absolute;
-    z-index: 2;
+    background: rgba(0, 0, 0, 0.3);
   }
-  :hover {
-    background-size: 130%;
+`;
+export const ColumnBottomContainerText = styled.p<{ big?: boolean }>`
+  z-index: 2;
+  color: #fff;
+  > svg {
+    fill: #fff;
+    width: 20px;
   }
+  font-size: ${({ big }) => (big ? "2rem" : "1rem")};
+  margin: 1rem 0;
+`;
+export const NewsletterContainer = styled.div`
+  height: 300px;
+  background: linear-gradient(to right, #fd746c, #ff9068);
 `;
 
-export const SalesText = styled.p<{ fontSize: string }>`
-  margin: 0;
-  color: #fff;
-  position: relative;
-  z-index: 3;
-  font-weight: 600;
-  letter-spacing: 1px;
-  font-size: ${({ fontSize }) => fontSize};
-`;
+export const SalesContainer = styled.div``;
+export const SneakersContainer = styled.div``;
