@@ -1,4 +1,10 @@
-import React from "react";
+import Link from "next/link";
+import FacebookIcon from "../../svg/FacebookIcon.svg";
+import InstagramIcon from "../../svg/InstagramIcon.svg";
+import MediumIcon from "../../svg/MediumIcon.svg";
+import TwitterIcon from "../../svg/TwitterIcon.svg";
+import YoutubeIcon from "../../svg/YoutubeIcon.svg";
+import FooterBlobOne from "../../svg/FooterBlobOne.svg";
 import {
   Wrapper,
   DeliverySection,
@@ -6,6 +12,14 @@ import {
   DeliveryDetails,
   DeliveryText,
   DeliveryIcon,
+  BottomFooter,
+  FooterTitle,
+  FooterLinksMenu,
+  FooterLinksMenuItem,
+  FooterLink,
+  SocialLinksContainer,
+  SocialLink,
+  BlobContainer,
 } from "./index.style";
 
 const DeliveryFeatures = [
@@ -42,6 +56,59 @@ const Footer = () => {
           </DeliveryContainer>
         ))}
       </DeliverySection>
+      <BottomFooter>
+        <FooterTitle>Shopper.</FooterTitle>
+        <FooterLinksMenu>
+          <FooterLinksMenuItem>
+            <Link href="/" passHref>
+              <FooterLink>Home</FooterLink>
+            </Link>
+          </FooterLinksMenuItem>
+          <FooterLinksMenuItem>
+            <Link href="/Shop" passHref>
+              <FooterLink>Shop</FooterLink>
+            </Link>
+          </FooterLinksMenuItem>
+          <FooterLinksMenuItem>
+            <Link href="/blog" passHref>
+              <FooterLink>Blog</FooterLink>
+            </Link>
+          </FooterLinksMenuItem>
+          <FooterLinksMenuItem>
+            <Link href="/faq" passHref>
+              <FooterLink>F.A.Q</FooterLink>
+            </Link>
+          </FooterLinksMenuItem>
+          <FooterLinksMenuItem>
+            <Link href="/contact" passHref>
+              <FooterLink>Contact</FooterLink>
+            </Link>
+          </FooterLinksMenuItem>
+        </FooterLinksMenu>
+        <SocialLinksContainer>
+          <SocialLink href="https://www.facebook.com">
+            <FacebookIcon />
+          </SocialLink>
+          <SocialLink href="https://www.youtube.com">
+            <YoutubeIcon />
+          </SocialLink>
+          <SocialLink href="https://www.twitter.com">
+            <TwitterIcon />
+          </SocialLink>
+          <SocialLink href="https://www.instagram.com">
+            <InstagramIcon />
+          </SocialLink>
+          <SocialLink href="https://www.medium.com">
+            <MediumIcon />
+          </SocialLink>
+        </SocialLinksContainer>
+        <BlobContainer>
+          <FooterBlobOne />
+        </BlobContainer>
+        <BlobContainer reverse>
+          <FooterBlobOne />
+        </BlobContainer>
+      </BottomFooter>
     </Wrapper>
   );
 };
