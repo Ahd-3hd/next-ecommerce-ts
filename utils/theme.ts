@@ -63,7 +63,7 @@ export const spaces: Space = {
 };
 
 export const colors = {
-  primary: "#1F1F1F",
+  primary: "#111111",
   secondary: "#FE6F61",
   grey: "#F5F5F5",
 };
