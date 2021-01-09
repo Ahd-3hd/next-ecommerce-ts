@@ -17,32 +17,38 @@ import ProductCard from "../../components/ProductCard";
 const catDum = [
   {
     id: 0,
-    title: "category",
-    options: ["all", "women", "men"],
+    title: "gender",
+    options: ["all", "women", "men", "unisex"],
   },
   {
     id: 1,
+    title: "category",
+    options: ["all", "shirts", "dresses", "trousers", "shoes", "accessories"],
+  },
+  {
+    id: 2,
     title: "season",
     options: ["all", "summer", "winter", "spring", "fall"],
   },
   {
-    id: 2,
+    id: 3,
     title: "size",
     options: ["all", "sm", "md", "lg", "xl"],
   },
   {
-    id: 3,
+    id: 4,
     title: "brand",
     options: ["all", "one", "two", "three", "four"],
   },
   {
-    id: 4,
+    id: 5,
     title: "price",
     options: ["all", "< $500", "< $1000", "< $2000", "< $3000"],
   },
 ];
 export default function Shop({ products }) {
   const [searchParams, setSearchParams] = useState({
+    gender: "all",
     category: "all",
     season: "all",
     size: "all",
@@ -59,6 +65,7 @@ export default function Shop({ products }) {
 
   const handleResetSearch = () => {
     setSearchParams({
+      gender: "all",
       category: "all",
       season: "all",
       size: "all",
@@ -144,6 +151,9 @@ const filterData = (data, params) => {
     if (query.brand !== "all") {
       output = output.filter((item) => item.brand === query.brand);
     }
+    if (query.gender !== "all") {
+      output = output.filter((item) => item.gender === query.gender);
+    }
 
     if (query.price !== "all") {
       const priceArray = query.price.split("$");
@@ -164,10 +174,11 @@ const data = [
     title: "dress one",
     price: "250",
     rating: 5,
-    category: "men",
+    category: "shirts",
     season: "summer",
     size: "md",
     brand: "one",
+    gender: "men",
   },
   {
     id: 2,
@@ -176,10 +187,11 @@ const data = [
     title: "shoes one",
     price: "650",
     rating: 4,
-    category: "men",
+    category: "dresses",
     season: "summer",
     size: "sm",
     brand: "one",
+    gender: "men",
   },
   {
     id: 3,
@@ -188,10 +200,11 @@ const data = [
     title: "shoes one",
     price: "650",
     rating: 3,
-    category: "men",
+    category: "trousers",
     season: "spring",
     size: "lg",
     brand: "two",
+    gender: "men",
   },
   {
     id: 4,
@@ -200,10 +213,11 @@ const data = [
     title: "shoes one",
     price: "650",
     rating: 2,
-    category: "men",
+    category: "shoes",
     season: "spring",
     size: "xl",
     brand: "two",
+    gender: "men",
   },
   {
     id: 5,
@@ -212,10 +226,11 @@ const data = [
     title: "shoes one",
     price: "650",
     rating: 1,
-    category: "men",
+    category: "accessories",
     season: "fall",
     size: "md",
     brand: "three",
+    gender: "women",
   },
   {
     id: 6,
@@ -224,10 +239,11 @@ const data = [
     title: "shoes one",
     price: "650",
     rating: 0,
-    category: "women",
+    category: "shirts",
     season: "fall",
     size: "lg",
     brand: "three",
+    gender: "women",
   },
   {
     id: 7,
@@ -236,10 +252,11 @@ const data = [
     title: "shoes one",
     price: "650",
     rating: 4,
-    category: "women",
+    category: "dresses",
     season: "winter",
     size: "sm",
     brand: "four",
+    gender: "women",
   },
   {
     id: 8,
@@ -248,10 +265,11 @@ const data = [
     title: "shoes one",
     price: "650",
     rating: 3,
-    category: "women",
+    category: "trousers",
     season: "winter",
     size: "xl",
     brand: "four",
+    gender: "unisex",
   },
   {
     id: 9,
@@ -260,10 +278,11 @@ const data = [
     title: "shoes one",
     price: "650",
     rating: 3,
-    category: "women",
+    category: "accessories",
     season: "fall",
     size: "md",
     brand: "one",
+    gender: "unisex",
   },
   {
     id: 10,
@@ -272,9 +291,10 @@ const data = [
     title: "shoes one",
     price: "650",
     rating: 2,
-    category: "women",
+    category: "shoes",
     season: "summer",
     size: "lg",
     brand: "two",
+    gender: "unisex",
   },
 ];

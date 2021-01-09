@@ -152,7 +152,7 @@ export const ResetSearchButton = styled.button`
   color: ${({ theme: { colors } }) => colors.secondary};
   padding: 1rem 0;
   text-decoration: underline;
-
+  cursor: pointer;
   margin: 1rem 0;
 `;
 
