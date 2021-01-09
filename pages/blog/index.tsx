@@ -8,8 +8,6 @@ const Blog = ({ blogs }) => {
 export default Blog;
 
 export async function getServerSideProps(context) {
-  const data = await fetch("https://mockend.com/org/repo/posts");
-  console.log(data);
   return {
     props: {
       blogs: [],
