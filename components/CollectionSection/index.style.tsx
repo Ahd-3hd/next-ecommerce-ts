@@ -13,6 +13,7 @@ export const Wrapper = styled.div`
 
 export const Container = styled.div<{ img: string }>`
   background: url(${({ img }) => img}) no-repeat;
+  background-size: cover;
   background-position: center;
   height: 600px;
   flex: 1;
@@ -30,6 +31,7 @@ export const Card = styled.div`
   width: 80%;
   text-align: center;
   color: ${({ theme: { colors } }) => colors.primary};
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.05);
   @media (min-width: ${({ theme: { breakpoints } }) => breakpoints.md}) {
     width: 30%;
   }
