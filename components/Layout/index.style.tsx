@@ -5,4 +5,6 @@ export const Wrapper = styled.div`
   @media (min-width: ${({ theme: { breakpoints } }) => breakpoints.md}) {
     padding: 0 6rem;
   }
+  max-width: 1920px;
+  margin: 0 auto;
 `;
