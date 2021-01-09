@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import Head from "next/head";
@@ -11,8 +11,17 @@ import {
   ResetSearchButton,
   ProductsContainer,
   NoResults,
+  CollectionContainer,
+  CollectionImg,
+  CollectionDetails,
+  CollectionText,
+  CollectionLink,
+  BackgroundWord,
 } from "../../styles/Shop.style";
 import ProductCard from "../../components/ProductCard";
+
+const collectionImgUrl =
+  "https://images.unsplash.com/photo-1514846326710-096e4a8035e0?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80";
 
 const catDum = [
   {
@@ -100,6 +109,20 @@ export default function Shop({ products }) {
           </ResetSearchButton>
         </FilterSection>
         <ProductsSection>
+          <CollectionContainer>
+            <CollectionImg img={collectionImgUrl} />
+            <CollectionDetails>
+              <CollectionText>
+                2021 Summer
+                <br />
+                Collection
+              </CollectionText>
+              <Link href="/shop/collection" passHref>
+                <CollectionLink>View Collection</CollectionLink>
+              </Link>
+            </CollectionDetails>
+            <BackgroundWord>New Summer</BackgroundWord>
+          </CollectionContainer>
           {products.length === 0 ? (
             <NoResults>No results.. try changing filters </NoResults>
           ) : (

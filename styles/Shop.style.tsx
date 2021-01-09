@@ -171,3 +171,72 @@ export const NoResults = styled.p`
   text-align: center;
   color: ${({ theme: { colors } }) => colors.primary};
 `;
+
+export const CollectionContainer = styled.div`
+  min-height: 350px;
+  background: #f5f5f5;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  @media (min-width: ${({ theme: { breakpoints } }) => breakpoints.md}) {
+    flex-direction: row-reverse;
+  }
+`;
+export const CollectionImg = styled.div<{ img: string }>`
+  flex: 10;
+  background: url(${({ img }) => img}) no-repeat;
+  background-size: cover;
+  background-position: center;
+  @media (min-width: ${({ theme: { breakpoints } }) => breakpoints.md}) {
+    flex: 1.5;
+  }
+  position: relative;
+  z-index: 2;
+`;
+export const CollectionDetails = styled.div`
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0.5rem;
+  padding-bottom: 2rem;
+  @media (min-width: ${({ theme: { breakpoints } }) => breakpoints.md}) {
+    justify-content: space-evenly;
+    padding-left: 2rem;
+  }
+`;
+export const CollectionText = styled.p`
+  font-weight: 600;
+  font-size: 1.5rem;
+  color: ${({ theme: { colors } }) => colors.primary};
+  margin: 0;
+  @media (min-width: ${({ theme: { breakpoints } }) => breakpoints.md}) {
+    font-size: 2rem;
+  }
+`;
+
+export const CollectionLink = styled.a`
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: ${({ theme: { colors } }) => colors.primary};
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid ${({ theme: { colors } }) => colors.primary};
+`;
+
+export const BackgroundWord = styled.span`
+  display: block;
+  position: absolute;
+  font-size: 5rem;
+  font-weight: 900;
+  z-index: 1;
+  margin: 0;
+  left: 50%;
+  top: 70%;
+  transform: translate(-50%, -50%);
+  color: rgba(70, 70, 70, 0.05);
+  letter-spacing: 2px;
+  user-select: none;
+  pointer-events: none;
+`;
