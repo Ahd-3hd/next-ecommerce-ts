@@ -94,12 +94,12 @@ export const CustomRadio = styled.div<{ checked: boolean }>`
   }
 `;
 
-export const Dropdown = ({ title, options, setParams, checked }) => {
+export const Dropdown = ({ title, options, setParams, checked, reset }) => {
   const [toggleOptions, setToggleOptions] = useState(false);
   const [isChecked, setIsChecked] = useState("all");
   useEffect(() => {
     setIsChecked(checked);
-  }, []);
+  }, [reset]);
   return (
     <DropdownContainer>
       <DropdownHeader
@@ -138,3 +138,13 @@ export const Dropdown = ({ title, options, setParams, checked }) => {
     </DropdownContainer>
   );
 };
+
+export const ResetSearchButton = styled.button`
+  width: 100%;
+  background: transparent;
+  border: none;
+  font-weight: 600;
+  color: ${({ theme: { colors } }) => colors.secondary};
+  padding: 1rem 0;
+  text-decoration: underline;
+`;

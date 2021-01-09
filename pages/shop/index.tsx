@@ -8,6 +8,7 @@ import {
   ProductsSection,
   Dropdown,
   FilterButton,
+  ResetSearchButton,
 } from "../../styles/Shop.style";
 
 const catDum = [
@@ -47,11 +48,21 @@ export default function Shop({ products }) {
   });
   const router = useRouter();
   const handleFilter = () => {
-    console.log(searchParams);
     router.push({
       pathname: "/shop",
       query: searchParams,
     });
+  };
+
+  const handleResetSearch = () => {
+    setSearchParams({
+      category: "all",
+      season: "all",
+      size: "all",
+      brand: "all",
+      price: "all",
+    });
+    router.push("/shop");
   };
 
   useEffect(() => {
@@ -72,9 +83,13 @@ export default function Shop({ products }) {
               options={entry.options}
               setParams={setSearchParams}
               checked={searchParams[entry.title]}
+              reset={handleResetSearch}
             />
           ))}
           <FilterButton onClick={handleFilter}>Filter</FilterButton>
+          <ResetSearchButton onClick={handleResetSearch}>
+            Reset Search
+          </ResetSearchButton>
         </FilterSection>
         <ProductsSection></ProductsSection>
       </Wrapper>
@@ -88,7 +103,7 @@ export async function getServerSideProps(context) {
   return {
     props: {
       products,
-    }, // will be passed to the page component as props
+    },
   };
 }
 
