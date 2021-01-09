@@ -68,17 +68,25 @@ const Navbar = () => {
             onChange={(e) =>
               setSearchParams((prevState) => ({
                 ...prevState,
-                keyword: e.target.value,
+                keyword: e.target.value.length === 0 ? "all" : e.target.value,
               }))
             }
           />
           <DropdownWrapper>
-            <CategoriesDropDown>
-              <DropdownOptions>All Categories</DropdownOptions>
-              <DropdownOptions>Shirts</DropdownOptions>
-              <DropdownOptions>Dresses</DropdownOptions>
-              <DropdownOptions>Shoes</DropdownOptions>
-              <DropdownOptions>Pants</DropdownOptions>
+            <CategoriesDropDown
+              onChange={(e) =>
+                setSearchParams((prevState) => ({
+                  ...prevState,
+                  category: e.target.value,
+                }))
+              }
+            >
+              <DropdownOptions value="all">All Categories</DropdownOptions>
+              <DropdownOptions value="shirts">shirts</DropdownOptions>
+              <DropdownOptions value="dresses">dresses</DropdownOptions>
+              <DropdownOptions value="trousers">trousers</DropdownOptions>
+              <DropdownOptions value="shoes">shoes</DropdownOptions>
+              <DropdownOptions value="accessories">accessories</DropdownOptions>
             </CategoriesDropDown>
           </DropdownWrapper>
           <SearchButton onClick={handleSearch}>
