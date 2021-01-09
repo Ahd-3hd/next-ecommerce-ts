@@ -10,6 +10,7 @@ import {
   FilterButton,
   ResetSearchButton,
   ProductsContainer,
+  NoResults,
 } from "../../styles/Shop.style";
 import ProductCard from "../../components/ProductCard";
 
@@ -92,18 +93,22 @@ export default function Shop({ products }) {
           </ResetSearchButton>
         </FilterSection>
         <ProductsSection>
-          <ProductsContainer>
-            {products.map((item) => (
-              <ProductCard
-                key={item.id}
-                id={item.id}
-                title={item.title}
-                img={item.img}
-                rating={item.rating}
-                price={item.price}
-              />
-            ))}
-          </ProductsContainer>
+          {products.length === 0 ? (
+            <NoResults>No results.. try changing filters </NoResults>
+          ) : (
+            <ProductsContainer>
+              {products.map((item) => (
+                <ProductCard
+                  key={item.id}
+                  id={item.id}
+                  title={item.title}
+                  img={item.img}
+                  rating={item.rating}
+                  price={item.price}
+                />
+              ))}
+            </ProductsContainer>
+          )}
         </ProductsSection>
       </Wrapper>
     </>

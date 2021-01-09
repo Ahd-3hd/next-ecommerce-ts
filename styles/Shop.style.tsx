@@ -152,6 +152,8 @@ export const ResetSearchButton = styled.button`
   color: ${({ theme: { colors } }) => colors.secondary};
   padding: 1rem 0;
   text-decoration: underline;
+
+  margin: 1rem 0;
 `;
 
 export const ProductsContainer = styled.div`
@@ -163,4 +165,9 @@ export const ProductsContainer = styled.div`
   @media (min-width: ${({ theme: { breakpoints } }) => breakpoints.lg}) {
     grid-template-columns: 1fr 1fr 1fr;
   }
+`;
+
+export const NoResults = styled.p`
+  text-align: center;
+  color: ${({ theme: { colors } }) => colors.primary};
 `;
