@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 import UserIcon from "../../svg/UserIcon.svg";
 import FavoriteIcon from "../../svg/FavoriteIcon.svg";
 import CartIcon from "../../svg/CartIcon.svg";
@@ -204,6 +205,7 @@ export const SearchButton = styled.button`
 `;
 
 export const MobileMenu = ({ toggleMenu }) => {
+  const router = useRouter();
   const [activeLink, setActiveLink] = useState("/");
   const [links] = useState([
     { href: "/", text: "Home" },
@@ -212,6 +214,9 @@ export const MobileMenu = ({ toggleMenu }) => {
     { href: "/faq", text: "F.A.Q" },
     { href: "/contact", text: "Contact" },
   ]);
+  useEffect(() => {
+    setActiveLink(router.pathname);
+  }, []);
   return (
     <MobileMenuList toggleMenu={toggleMenu}>
       {links.map((item) => (
@@ -228,6 +233,7 @@ export const MobileMenu = ({ toggleMenu }) => {
 };
 
 export const DesktopMenu = () => {
+  const router = useRouter();
   const [links] = useState([
     { href: "/", text: "Home" },
     { href: "/shop", text: "Shop" },
@@ -236,6 +242,10 @@ export const DesktopMenu = () => {
     { href: "/contact", text: "Contact" },
   ]);
   const [activeLink, setActiveLink] = useState("/");
+
+  useEffect(() => {
+    setActiveLink(router.pathname);
+  }, []);
   return (
     <DesktopMenuList>
       {links.map((item) => (
