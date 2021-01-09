@@ -1,3 +1,6 @@
+import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
+
 import Head from "next/head";
 import {
   Wrapper,
@@ -10,32 +13,43 @@ import {
 const catDum = [
   {
     id: 0,
-    title: "Category",
-    options: ["All", "Women", "Men"],
+    title: "category",
+    options: ["all", "women", "men"],
   },
   {
     id: 1,
-    title: "Season",
-    options: ["All", "Summer", "Winter", "Spring", "Fall"],
+    title: "season",
+    options: ["all", "summer", "winter", "spring", "fall"],
   },
   {
     id: 2,
-    title: "Size",
-    options: ["All", "sm", "md", "lg", "xl"],
+    title: "size",
+    options: ["all", "sm", "md", "lg", "xl"],
   },
   {
     id: 3,
-    title: "Brand",
-    options: ["All", "One", "Two", "Three", "Four"],
+    title: "brand",
+    options: ["all", "one", "two", "three", "four"],
   },
   {
     id: 4,
-    title: "Price",
-    options: ["All", "< $500", "< $1000", "< $2000", "< $3000"],
+    title: "price",
+    options: ["all", "< $500", "< $1000", "< $2000", "< $3000"],
   },
 ];
-
 export default function Shop() {
+  const [searchParams, setSearchParams] = useState({
+    category: "all",
+    season: "all",
+    size: "all",
+    brand: "all",
+    price: "all",
+  });
+  const router = useRouter();
+  const handleFilter = () => {
+    console.log(searchParams);
+  };
+
   return (
     <>
       <Head>
@@ -43,13 +57,26 @@ export default function Shop() {
       </Head>
       <Wrapper>
         <FilterSection>
-          {catDum.map((item) => (
-            <Dropdown key={item.id} title={item.title} options={item.options} />
+          {catDum.map((entry) => (
+            <Dropdown
+              key={entry.id}
+              title={entry.title}
+              options={entry.options}
+              setParams={setSearchParams}
+              checked={searchParams[entry.title]}
+            />
           ))}
-          <FilterButton>Filter</FilterButton>
+          <FilterButton onClick={handleFilter}>Filter</FilterButton>
         </FilterSection>
         <ProductsSection></ProductsSection>
       </Wrapper>
     </>
   );
+}
+
+export async function getServerSideProps(context) {
+  console.log(context.query);
+  return {
+    props: {}, // will be passed to the page component as props
+  };
 }

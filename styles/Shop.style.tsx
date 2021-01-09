@@ -1,6 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
-import { DropdownOptions } from "../components/Navbar/index.style";
 import CaretDown from "../svg/CaretDown.svg";
 
 export const Wrapper = styled.div`
@@ -25,20 +24,16 @@ export const FilterButton = styled.button`
     color: #fff;
   }
 `;
-export const DropDownContainer = styled.div``;
-export const LabelContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  padding: 0.5rem 0;
+
+export const DropdownContainer = styled.div`
+  padding-bottom: 0.5rem;
   border-bottom: 2px solid ${({ theme: { colors } }) => colors.grey};
-  margin: 1rem 0;
-  cursor: pointer;
+  margin: 0.85rem 0;
 `;
-export const Label = styled.span`
-  color: ${({ theme: { colors } }) => colors.primary};
-`;
-export const DropdownCaret = styled.div<{ toggle: boolean }>`
+export const DropdownHeader = styled.div<{ toggle: boolean }>`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   > svg {
     fill: ${({ theme: { colors } }) => colors.primary};
     width: 15px;
@@ -46,55 +41,93 @@ export const DropdownCaret = styled.div<{ toggle: boolean }>`
     transform: rotateZ(${({ toggle }) => (toggle ? "180deg" : "0deg")});
   }
 `;
-
-export const DropDownOptionsContainer = styled.div<{
-  toggle: boolean;
-  height: number;
-}>`
-  height: ${({ toggle, height }) => (toggle ? height : 0)}px;
-  overflow: hidden;
-  transition: height 0.3s ease;
+export const DropdownHeaderTitle = styled.span`
+  fill: ${({ theme: { colors } }) => colors.primary};
+  margin: 0;
 `;
-export const DropDownOption = styled.div`
+
+export const DropdownOptionsContainer = styled.div<{
+  optionsNum: number;
+  toggle: boolean;
+}>`
+  height: ${({ toggle, optionsNum }) =>
+    toggle ? `${optionsNum * 32}px` : "0"};
+  overflow: hidden;
+  transition: height 0.4s ease;
+`;
+export const DropdownOption = styled.div`
   display: flex;
   align-items: center;
-  height: 40px;
+  height: 32px;
 `;
-export const OptionLabel = styled.label`
-  font-size: 0.85rem;
-  color: ${({ theme: { colors } }) => colors.primary};
-`;
-export const OptionInput = styled.input`
+export const DropdownRadio = styled.input`
   display: none;
 `;
-export const OptionInputReplacement = styled.div`
-  width: 20px;
-  height: 20px;
+export const DropdownLabel = styled.label`
+  font-size: 0.9rem;
+`;
+export const CustomRadio = styled.div<{ checked: boolean }>`
+  height: 16px;
+  width: 16px;
+  border-radius: 15px;
   background: ${({ theme: { colors } }) => colors.primary};
-  margin-right: 1rem;
-  border-radius: 20px;
+  margin-right: 0.5rem;
   position: relative;
+  ::after {
+    content: "";
+    position: absolute;
+    width: ${({ checked }) => (checked ? "10px" : "0")};
+    height: ${({ checked }) => (checked ? "10px" : "0")};
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    border-radius: 100%;
+    background: ${({ theme: { colors } }) => colors.grey};
+    transition: all 0.3s ease;
+  }
 `;
 
-export const Dropdown = ({ title, options }) => {
-  const [toggle, setToggle] = useState(false);
+export const Dropdown = ({ title, options, setParams, checked }) => {
+  const [toggleOptions, setToggleOptions] = useState(false);
+  const [isChecked, setIsChecked] = useState("all");
+  useEffect(() => {
+    setIsChecked(checked);
+  }, []);
   return (
-    <DropDownContainer>
-      <LabelContainer onClick={() => setToggle((prevState) => !prevState)}>
-        <Label>{title}</Label>
-        <DropdownCaret toggle={toggle}>
-          <CaretDown />
-        </DropdownCaret>
-      </LabelContainer>
-      <DropDownOptionsContainer toggle={toggle} height={options.length * 40}>
-        {options.map((opt) => (
-          <DropDownOption key={opt}>
-            <OptionInputReplacement id={opt} />
-            <OptionInput id={opt} type="radio"></OptionInput>
-            <OptionLabel htmlFor={opt}>{opt}</OptionLabel>
-          </DropDownOption>
+    <DropdownContainer>
+      <DropdownHeader
+        onClick={() => setToggleOptions((prevState) => !prevState)}
+        toggle={toggleOptions}
+      >
+        <DropdownHeaderTitle>{title}</DropdownHeaderTitle>
+        <CaretDown />
+      </DropdownHeader>
+      <DropdownOptionsContainer
+        optionsNum={options.length}
+        toggle={toggleOptions}
+      >
+        {options.map((option) => (
+          <DropdownOption key={option}>
+            <CustomRadio checked={isChecked === option} />
+            <DropdownRadio
+              type="radio"
+              id={`${option}${title}`}
+              name={title}
+              defaultChecked={checked === option}
+              onChange={() =>
+                setParams((prevState) => {
+                  setIsChecked(option);
+                  prevState[title] = option;
+                  return prevState;
+                })
+              }
+            />
+            <DropdownLabel htmlFor={`${option}${title}`}>
+              {option}
+            </DropdownLabel>
+          </DropdownOption>
         ))}
-      </DropDownOptionsContainer>
-    </DropDownContainer>
+      </DropdownOptionsContainer>
+    </DropdownContainer>
   );
 };
