@@ -1,8 +1,10 @@
 import styled from "styled-components";
+import Link from "next/link";
 
 export const Wrapper = styled.div``;
 
 export const FeaturedBlogsContainer = styled.div`
+  margin: 2rem 0;
   @media (min-width: ${({ theme: { breakpoints } }) => breakpoints.md}) {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -19,7 +21,8 @@ export const SmallFeaturedColumn = styled.div`
   }
 `;
 
-export const FeaturedCard = styled.div`
+export const FeaturedCard = styled.a`
+  display: block;
   height: 350px;
   position: relative;
   margin: 1.4rem 0;
@@ -73,7 +76,8 @@ export const DateTagContainer = styled.div`
   align-items: center;
 `;
 
-export const SmallFeaturedCard = styled.div`
+export const SmallFeaturedCard = styled.a`
+  display: block;
   height: 350px;
   position: relative;
   margin: 1.4rem 0;
@@ -131,42 +135,49 @@ export const Featured = ({ featuredBlogs }) => {
   return (
     <FeaturedBlogsContainer>
       <FeaturedColumn>
-        <FeaturedCard>
-          <FeaturedImg img={featuredBlogs[0].img} />
-          <FeaturedDetails>
-            <DateTagContainer>
-              <FeaturedTag>fashion</FeaturedTag>
-              <FeaturedDate>
-                {new Date(featuredBlogs[0].createdAt).toLocaleString("en-US", {
-                  month: "short",
-                  day: "numeric",
-                })}
-              </FeaturedDate>
-            </DateTagContainer>
-            <FeaturedTitle>{featuredBlogs[0].title}</FeaturedTitle>
-          </FeaturedDetails>
-        </FeaturedCard>
+        <Link href={`/blogs/${featuredBlogs[0].id}`} passHref>
+          <FeaturedCard>
+            <FeaturedImg img={featuredBlogs[0].img} />
+            <FeaturedDetails>
+              <DateTagContainer>
+                <FeaturedTag>fashion</FeaturedTag>
+                <FeaturedDate>
+                  {new Date(featuredBlogs[0].createdAt).toLocaleString(
+                    "en-US",
+                    {
+                      month: "short",
+                      day: "numeric",
+                    }
+                  )}
+                </FeaturedDate>
+              </DateTagContainer>
+              <FeaturedTitle>{featuredBlogs[0].title}</FeaturedTitle>
+            </FeaturedDetails>
+          </FeaturedCard>
+        </Link>
       </FeaturedColumn>
 
       <SmallFeaturedColumn>
         {featuredBlogs
           .filter((entry, i) => (i > 0 ? entry : null))
           .map((item) => (
-            <SmallFeaturedCard key={item.id}>
-              <SmallFeaturedImg img={item.img} />
-              <SmallFeaturedDetails>
-                <SmallDateTagContainer>
-                  <SmallFeaturedTag>Fashion</SmallFeaturedTag>
-                  <SmallFeaturedDate>
-                    {new Date(item.createdAt).toLocaleString("en-US", {
-                      month: "short",
-                      day: "numeric",
-                    })}
-                  </SmallFeaturedDate>
-                </SmallDateTagContainer>
-                <SmallFeaturedTitle>{item.title}</SmallFeaturedTitle>
-              </SmallFeaturedDetails>
-            </SmallFeaturedCard>
+            <Link href={`/blogs/${item.id}`} passHref key={item.id}>
+              <SmallFeaturedCard key={item.id}>
+                <SmallFeaturedImg img={item.img} />
+                <SmallFeaturedDetails>
+                  <SmallDateTagContainer>
+                    <SmallFeaturedTag>Fashion</SmallFeaturedTag>
+                    <SmallFeaturedDate>
+                      {new Date(item.createdAt).toLocaleString("en-US", {
+                        month: "short",
+                        day: "numeric",
+                      })}
+                    </SmallFeaturedDate>
+                  </SmallDateTagContainer>
+                  <SmallFeaturedTitle>{item.title}</SmallFeaturedTitle>
+                </SmallFeaturedDetails>
+              </SmallFeaturedCard>
+            </Link>
           ))}
       </SmallFeaturedColumn>
     </FeaturedBlogsContainer>
