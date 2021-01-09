@@ -19,6 +19,7 @@ export const FilterButton = styled.button`
   font-weight: 600;
   font-size: 1.1rem;
   transition: background 0.3s ease;
+  cursor: pointer;
   :hover {
     background: ${({ theme: { colors } }) => colors.primary};
     color: #fff;
@@ -34,6 +35,7 @@ export const DropdownHeader = styled.div<{ toggle: boolean }>`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  cursor: pointer;
   > svg {
     fill: ${({ theme: { colors } }) => colors.primary};
     width: 15px;
@@ -65,6 +67,9 @@ export const DropdownRadio = styled.input`
 `;
 export const DropdownLabel = styled.label`
   font-size: 0.9rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
 `;
 export const CustomRadio = styled.div<{ checked: boolean }>`
   height: 16px;
@@ -73,6 +78,8 @@ export const CustomRadio = styled.div<{ checked: boolean }>`
   background: ${({ theme: { colors } }) => colors.primary};
   margin-right: 0.5rem;
   position: relative;
+  cursor: pointer;
+
   ::after {
     content: "";
     position: absolute;
@@ -108,7 +115,6 @@ export const Dropdown = ({ title, options, setParams, checked }) => {
       >
         {options.map((option) => (
           <DropdownOption key={option}>
-            <CustomRadio checked={isChecked === option} />
             <DropdownRadio
               type="radio"
               id={`${option}${title}`}
@@ -123,6 +129,7 @@ export const Dropdown = ({ title, options, setParams, checked }) => {
               }
             />
             <DropdownLabel htmlFor={`${option}${title}`}>
+              <CustomRadio checked={isChecked === option} />
               {option}
             </DropdownLabel>
           </DropdownOption>
