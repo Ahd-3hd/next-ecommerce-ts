@@ -6,6 +6,7 @@ export const Container = styled.a`
   display: flex;
   flex-direction: column;
   margin: 1.7rem 0;
+  box-shadow: 0px 0px 4px ${({ theme: { colors } }) => colors.grey};
 `;
 
 export const Img = styled.div<{ url: string }>`
@@ -21,15 +22,18 @@ export const Details = styled.div`
   justify-content: center;
   align-items: center;
   text-align: center;
+  padding: 0.5rem 0;
 `;
 export const Title = styled.p`
   color: ${({ theme: { colors } }) => colors.primary};
   font-weight: 600;
+  margin: 0.5rem 0;
 `;
 export const Price = styled.p`
   color: ${({ theme: { colors } }) => colors.primary};
   font-weight: 600;
   font-size: 1.2rem;
+  margin: 0.5rem 0;
 `;
 export const Ratings = styled.div`
   display: flex;

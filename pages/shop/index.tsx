@@ -75,8 +75,6 @@ export default function Shop({ products }) {
     router.push("/shop");
   };
 
-  useEffect(() => {}, []);
-
   return (
     <>
       <Head>
