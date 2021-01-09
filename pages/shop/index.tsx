@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
-
+import Link from "next/link";
 import Head from "next/head";
 import {
   Wrapper,
@@ -9,7 +9,9 @@ import {
   Dropdown,
   FilterButton,
   ResetSearchButton,
+  ProductsContainer,
 } from "../../styles/Shop.style";
+import ProductCard from "../../components/ProductCard";
 
 const catDum = [
   {
@@ -65,9 +67,7 @@ export default function Shop({ products }) {
     router.push("/shop");
   };
 
-  useEffect(() => {
-    console.log(products);
-  }, []);
+  useEffect(() => {}, []);
 
   return (
     <>
@@ -91,7 +91,20 @@ export default function Shop({ products }) {
             Reset Search
           </ResetSearchButton>
         </FilterSection>
-        <ProductsSection></ProductsSection>
+        <ProductsSection>
+          <ProductsContainer>
+            {products.map((item) => (
+              <ProductCard
+                key={item.id}
+                id={item.id}
+                title={item.title}
+                img={item.img}
+                rating={item.rating}
+                price={item.price}
+              />
+            ))}
+          </ProductsContainer>
+        </ProductsSection>
       </Wrapper>
     </>
   );
@@ -99,7 +112,6 @@ export default function Shop({ products }) {
 
 export async function getServerSideProps(context) {
   const products = filterData(data, context.query);
-  console.log(context.query);
   return {
     props: {
       products,

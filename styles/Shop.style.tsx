@@ -4,6 +4,11 @@ import CaretDown from "../svg/CaretDown.svg";
 
 export const Wrapper = styled.div`
   margin-top: 2rem;
+  @media (min-width: ${({ theme: { breakpoints } }) => breakpoints.lg}) {
+    display: grid;
+    grid-gap: 2rem;
+    grid-template-columns: 1fr 3fr;
+  }
 `;
 export const FilterSection = styled.div`
   padding: 1rem 0;
@@ -147,4 +152,15 @@ export const ResetSearchButton = styled.button`
   color: ${({ theme: { colors } }) => colors.secondary};
   padding: 1rem 0;
   text-decoration: underline;
+`;
+
+export const ProductsContainer = styled.div`
+  @media (min-width: ${({ theme: { breakpoints } }) => breakpoints.md}) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 2rem;
+  }
+  @media (min-width: ${({ theme: { breakpoints } }) => breakpoints.lg}) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 `;
