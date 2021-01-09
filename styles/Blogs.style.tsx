@@ -2,15 +2,31 @@ import styled from "styled-components";
 
 export const Wrapper = styled.div``;
 
-export const FeaturedBlogsContainer = styled.div``;
+export const FeaturedBlogsContainer = styled.div`
+  @media (min-width: ${({ theme: { breakpoints } }) => breakpoints.md}) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1rem;
+  }
+`;
 
 export const FeaturedColumn = styled.div``;
-export const SmallFeaturedColumn = styled.div``;
+export const SmallFeaturedColumn = styled.div`
+  @media (min-width: ${({ theme: { breakpoints } }) => breakpoints.md}) {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 1rem;
+  }
+`;
 
 export const FeaturedCard = styled.div`
   height: 350px;
   position: relative;
   margin: 1.4rem 0;
+  @media (min-width: ${({ theme: { breakpoints } }) => breakpoints.md}) {
+    height: 100%;
+    margin: 0;
+  }
 `;
 export const FeaturedImg = styled.div<{ img: string }>`
   background: url(${({ img }) => img}) no-repeat;
@@ -61,6 +77,10 @@ export const SmallFeaturedCard = styled.div`
   height: 350px;
   position: relative;
   margin: 1.4rem 0;
+
+  @media (min-width: ${({ theme: { breakpoints } }) => breakpoints.md}) {
+    margin: 0;
+  }
 `;
 export const SmallFeaturedImg = styled.div<{ img: string }>`
   background: url(${({ img }) => img}) no-repeat;
