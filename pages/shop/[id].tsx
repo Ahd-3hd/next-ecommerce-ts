@@ -23,6 +23,17 @@ import {
   SizeContainer,
   SizeLabel,
   SizeButton,
+  ExtraContainer,
+  TabsContainer,
+  Tab,
+  TabContent,
+  DescriptionTabContent,
+  ReviewsTabContent,
+  DescriptionParagraph,
+  Bulletpoints,
+  Bullet,
+  BulletSpan,
+  Review,
 } from "../../styles/ProductPage.style";
 import dummyProducts from "../../dummy/dummyProducts.json";
 import StarIcon from "../../svg/StarIcon.svg";
@@ -30,6 +41,7 @@ import CartIcon from "../../svg/CartIcon.svg";
 import FavoriteIcon from "../../svg/FavoriteIcon.svg";
 const ProductPage = ({ product }) => {
   const [selectedSize, setSelectedSize] = useState("sm");
+  const [activeTab, setActiveTab] = useState("Reviews");
   const [activeIndex, setActiveIndex] = useState(0);
   console.log(product);
   return (
@@ -116,6 +128,51 @@ const ProductPage = ({ product }) => {
             </CartContainer>
           </ProductDetails>
         </Container>
+        <ExtraContainer>
+          <TabsContainer>
+            <Tab
+              isActive={activeTab === "Description"}
+              onClick={() => setActiveTab("Description")}
+            >
+              Description
+            </Tab>
+            <Tab
+              isActive={activeTab === "Reviews"}
+              onClick={() => setActiveTab("Reviews")}
+            >
+              Reviews
+            </Tab>
+          </TabsContainer>
+          <TabContent>
+            {activeTab === "Description" ? (
+              <DescriptionTabContent>
+                <DescriptionParagraph>
+                  {product.description.text}
+                </DescriptionParagraph>
+                <Bulletpoints>
+                  {product.description.bulletpoints.map((bull) => (
+                    <Bullet key={bull.id}>
+                      <BulletSpan bold>{bull.title}:</BulletSpan>
+                      <BulletSpan>{bull.value}</BulletSpan>
+                    </Bullet>
+                  ))}
+                </Bulletpoints>
+              </DescriptionTabContent>
+            ) : (
+              <ReviewsTabContent>
+                {product.reviews.map((item) => (
+                  <Review
+                    key={item.id}
+                    text={item.text}
+                    username={item.username}
+                    avatar={item.avatar}
+                    rating={item.rating}
+                  />
+                ))}
+              </ReviewsTabContent>
+            )}
+          </TabContent>
+        </ExtraContainer>
       </Wrapper>
     </>
   );

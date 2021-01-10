@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import StarIcon from "../svg/StarIcon.svg";
 
 export const Wrapper = styled.div``;
 
@@ -171,4 +172,122 @@ export const SizeButton = styled.button<{ selected: boolean }>`
   justify-content: center;
   text-align: center;
   background: ${({ theme: { colors } }) => colors.grey};
+  cursor: pointer;
 `;
+
+export const ExtraContainer = styled.div`
+  margin-top: 2rem;
+`;
+
+export const TabsContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  margin: 1rem 0;
+`;
+export const Tab = styled.button<{ isActive: boolean }>`
+  background: transparent;
+  font-weight: 600;
+  border: none;
+  border-bottom: 2px solid
+    ${({ theme: { colors }, isActive }) =>
+      isActive ? colors.secondary : "rgba(0, 0, 0, 0.1)"};
+  color: ${({ theme: { colors }, isActive }) =>
+    isActive ? colors.secondary : colors.primary};
+  cursor: pointer;
+  padding: 0.5rem 2rem;
+  font-size: 1rem;
+  outline: none;
+  flex: 1;
+  transition: 0.3s ease-in-out;
+`;
+
+export const TabContent = styled.div``;
+
+export const DescriptionTabContent = styled.div`
+  @media (min-width: ${({ theme: { breakpoints } }) => breakpoints.md}) {
+    max-width: 45ch;
+    margin: auto;
+  }
+`;
+
+export const DescriptionParagraph = styled.p`
+  color: ${({ theme: { colors } }) => `${colors.primary}ee`};
+  margin: 3rem 0;
+`;
+export const Bulletpoints = styled.ul`
+  list-style-type: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  grid-gap: 1rem;
+  margin: 3rem 0;
+  @media (min-width: ${({ theme: { breakpoints } }) => breakpoints.md}) {
+    grid-template-columns: 1fr 1fr;
+    justify-items: start;
+  }
+`;
+export const Bullet = styled.li``;
+export const BulletSpan = styled.span<{ bold?: boolean }>`
+  font-weight: ${({ bold }) => (bold ? "600" : "400")};
+  color: ${({ theme: { colors } }) => colors.primary};
+  margin-left: ${({ bold }) => (!bold ? "1rem" : "0")};
+  font-size: 0.85rem;
+`;
+
+export const ReviewsTabContent = styled.div``;
+
+export const ReviewContainer = styled.div`
+  display: flex;
+  align-items: flex-start;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.08);
+  padding: 1rem;
+  margin: 2rem 0;
+  @media (min-width: ${({ theme: { breakpoints } }) => breakpoints.md}) {
+    max-width: 55ch;
+    margin: 3rem auto;
+  }
+`;
+export const ReviewAvatar = styled.img`
+  width: 60px;
+  height: 60px;
+  border-radius: 60px;
+`;
+export const ReviewDetails = styled.div`
+  padding-left: 1rem;
+  color: ${({ theme: { colors } }) => colors.primary};
+`;
+export const ReviewRating = styled.div`
+  display: flex;
+`;
+export const ReviewStar = styled.div<{ active: boolean }>`
+  > svg {
+    width: 15px;
+    fill: ${({ theme: { colors }, active }) =>
+      active ? colors.primary : `${colors.primary}33`};
+  }
+`;
+export const ReviewUsername = styled.p`
+  margin-top: 0;
+  font-weight: bold;
+`;
+export const ReviewText = styled.p``;
+
+export const Review = ({ avatar, text, rating, username }) => {
+  return (
+    <ReviewContainer>
+      <ReviewAvatar src={avatar} alt={username} />
+      <ReviewDetails>
+        <ReviewUsername>{username}</ReviewUsername>
+        <ReviewRating>
+          {[...Array(5)].map((value: undefined, index: number) => (
+            <ReviewStar key={index} active={index < rating}>
+              <StarIcon />
+            </ReviewStar>
+          ))}
+        </ReviewRating>
+        <ReviewText>{text}</ReviewText>
+      </ReviewDetails>
+    </ReviewContainer>
+  );
+};
