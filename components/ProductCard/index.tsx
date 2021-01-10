@@ -12,7 +12,7 @@ import Link from "next/link";
 
 const ProductCard = ({ id, title, img, rating, price }) => {
   return (
-    <Link href={`/products/${id}`} passHref>
+    <Link href={`/shop/${id}`} passHref>
       <Container>
         <Img url={img} />
         <Details>
