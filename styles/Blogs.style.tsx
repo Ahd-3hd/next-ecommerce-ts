@@ -172,7 +172,7 @@ export const Featured = ({ featuredBlogs }) => {
           {featuredBlogs
             .filter((entry, i) => (i > 0 ? entry : null))
             .map((item) => (
-              <Link href={`/blogs/${item.id}`} passHref key={item.id}>
+              <Link href={`/blog/${item.id}`} passHref key={item.id}>
                 <SmallFeaturedCard key={item.id}>
                   <SmallFeaturedImg img={item.img} />
                   <SmallFeaturedDetails>
@@ -264,7 +264,7 @@ export const Recent = ({ recentBlogs }) => {
       <SectionTitle>Recent Blogs</SectionTitle>
       <RecentBlogsContainer>
         {recentBlogs.map((entry) => (
-          <Link href={`/blogs/${entry.id}`} key={entry.id} passHref>
+          <Link href={`/blog/${entry.id}`} key={entry.id} passHref>
             <RecentCard>
               <RecentImg img={entry.img} />
               <RecentDetails>
