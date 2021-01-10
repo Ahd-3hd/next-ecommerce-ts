@@ -2,10 +2,10 @@ import Link from "next/link";
 import { Wrapper, Title, Container, DiscoverLink } from "./index.style";
 import ProductCard from "../ProductCard";
 
-const NewArrivals = ({ products }) => {
+const ProductsShowcase = ({ products, title }) => {
   return (
     <Wrapper>
-      <Title>New Arrivals</Title>
+      <Title>{title}</Title>
       <Container>
         {products.map((item) => (
           <ProductCard
@@ -25,4 +25,4 @@ const NewArrivals = ({ products }) => {
   );
 };
 
-export default NewArrivals;
+export default ProductsShowcase;

@@ -43,7 +43,6 @@ const ProductPage = ({ product }) => {
   const [selectedSize, setSelectedSize] = useState("sm");
   const [activeTab, setActiveTab] = useState("Reviews");
   const [activeIndex, setActiveIndex] = useState(0);
-  console.log(product);
   return (
     <>
       <Head>

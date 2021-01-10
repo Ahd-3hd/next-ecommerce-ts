@@ -9,6 +9,7 @@ export const Title = styled.p`
   text-align: center;
   font-size: 1.6rem;
   color: ${({ theme: { colors } }) => colors.primary};
+  font-weight: 600;
 `;
 
 export const Container = styled.div`

@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Header from "../components/Header";
-import NewArrivals from "../components/NewArrivals";
+import ProductsShowcase from "../components/ProductsShowcase";
 import CollectionSection from "../components/CollectionSection";
 import Brands from "../components/Brands";
 import BlogSection from "../components/BlogSection";
@@ -13,7 +13,7 @@ export default function Home({ products }) {
         <title>Home</title>
       </Head>
       <Header />
-      <NewArrivals products={products} />
+      <ProductsShowcase products={products} title="New Arrivals" />
       <CollectionSection />
       <Brands />
       <BlogSection />
