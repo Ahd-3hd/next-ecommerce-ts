@@ -2,11 +2,17 @@ import styled from "styled-components";
 
 export const Wrapper = styled.div``;
 
-export const Container = styled.div``;
-
-export const Carousel = styled.div`
-  margin: 2rem 0;
+export const Container = styled.div`
+  margin: 3rem 0;
+  @media (min-width: ${({ theme: { breakpoints } }) => breakpoints.md}) {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-gap: 2rem;
+    align-items: start;
+  }
 `;
+
+export const Carousel = styled.div``;
 
 export const BigImg = styled.div<{ img: string }>`
   height: 350px;
@@ -76,7 +82,7 @@ export const ProductPrice = styled.p`
 export const CartContainer = styled.div`
   display: flex;
   flex-direction: column;
-  @media (min-width: ${({ theme: { breakpoints } }) => breakpoints.md}) {
+  @media (min-width: ${({ theme: { breakpoints } }) => breakpoints.lg}) {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 1rem;
@@ -134,7 +140,6 @@ export const AddToFavorite = styled.button`
 export const SizeContainer = styled.div`
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
   margin: 2rem 0;
 `;
 
