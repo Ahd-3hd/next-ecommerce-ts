@@ -146,7 +146,7 @@ export const Featured = ({ featuredBlogs }) => {
       <SectionTitle>Featured Blogs</SectionTitle>
       <FeaturedBlogsContainer>
         <FeaturedColumn>
-          <Link href={`/blogs/${featuredBlogs[0].id}`} passHref>
+          <Link href={`/blog/${featuredBlogs[0].id}`} passHref>
             <FeaturedCard>
               <FeaturedImg img={featuredBlogs[0].img} />
               <FeaturedDetails>
