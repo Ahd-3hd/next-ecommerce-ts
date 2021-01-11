@@ -23,8 +23,10 @@ import {
   CheckoutButton,
 } from "../../styles/Cart.style";
 import dummyProducts from "../../dummy/dummyProducts.json";
+import { useRouter } from "next/router";
 
 const Cart = ({ products }) => {
+  const router = useRouter();
   const [items, setItems] = useState(products);
 
   const handleRemove = (id) => {
@@ -51,6 +53,10 @@ const Cart = ({ products }) => {
         return item;
       })
     );
+  };
+
+  const handleProceed = () => {
+    router.push("/checkout");
   };
   return (
     <>
@@ -107,7 +113,9 @@ const Cart = ({ products }) => {
                 <PriceValue>${afterTax()}</PriceValue>
               </PriceRow>
             </PriceBreakdownContainer>
-            <CheckoutButton>Proceed to Checkout</CheckoutButton>
+            <CheckoutButton onClick={handleProceed}>
+              Proceed to Checkout
+            </CheckoutButton>
           </Column>
         </Container>
       </Wrapper>
