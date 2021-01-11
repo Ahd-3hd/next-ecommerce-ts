@@ -16,6 +16,10 @@ import {
   QuantityOption,
   PriceText,
   RemoveButton,
+  PriceBreakdownContainer,
+  PriceRow,
+  PriceKey,
+  PriceValue,
 } from "../../styles/Cart.style";
 import dummyProducts from "../../dummy/dummyProducts.json";
 
@@ -24,6 +28,17 @@ const Cart = ({ products }) => {
 
   const handleRemove = (id) => {
     setItems((prevState) => prevState.filter((item) => item.id !== id));
+  };
+  const calculateSubTotal = () => {
+    const total = items.reduce((acc, item) => {
+      return (acc += parseInt(item.price));
+    }, 0);
+
+    return total;
+  };
+
+  const afterTax = () => {
+    return calculateSubTotal() + 15;
   };
   return (
     <>
@@ -63,7 +78,22 @@ const Cart = ({ products }) => {
               </ProductCard>
             ))}
           </Column>
-          <Column></Column>
+          <Column>
+            <PriceBreakdownContainer>
+              <PriceRow>
+                <PriceKey>Subtotal</PriceKey>
+                <PriceValue>{calculateSubTotal()}</PriceValue>
+              </PriceRow>
+              <PriceRow>
+                <PriceKey>Tax</PriceKey>
+                <PriceValue>$15.00</PriceValue>
+              </PriceRow>
+              <PriceRow>
+                <PriceKey>Total</PriceKey>
+                <PriceValue>{afterTax()}</PriceValue>
+              </PriceRow>
+            </PriceBreakdownContainer>
+          </Column>
         </Container>
       </Wrapper>
     </>

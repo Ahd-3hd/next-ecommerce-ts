@@ -62,3 +62,23 @@ export const RemoveButton = styled.button`
   border: none;
   color: ${({ theme: { colors } }) => colors.primary};
 `;
+
+export const PriceBreakdownContainer = styled.div`
+  background: ${({ theme: { colors } }) => colors.grey};
+  padding: 0.5rem 1rem;
+
+  margin-bottom: 2rem;
+`;
+export const PriceRow = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: ${({ theme: { colors } }) => colors.primary};
+  padding-bottom: 0.5rem;
+  border-bottom: 1.5px solid ${({ theme: { colors } }) => `${colors.primary}22`};
+  margin: 1rem 0;
+`;
+export const PriceKey = styled.p`
+  font-weight: bold;
+`;
+export const PriceValue = styled.p``;
