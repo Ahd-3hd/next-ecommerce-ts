@@ -147,6 +147,7 @@ export default function Shop({ products }) {
 }
 
 export async function getServerSideProps(context) {
+  console.log(context);
   const products = filterData(dummyProducts, context.query);
   return {
     props: {

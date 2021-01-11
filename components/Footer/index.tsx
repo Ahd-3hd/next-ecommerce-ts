@@ -66,7 +66,7 @@ const Footer = () => {
             </Link>
           </FooterLinksMenuItem>
           <FooterLinksMenuItem>
-            <Link href="/Shop" passHref>
+            <Link href="/shop" passHref>
               <FooterLink>Shop</FooterLink>
             </Link>
           </FooterLinksMenuItem>
@@ -78,11 +78,6 @@ const Footer = () => {
           <FooterLinksMenuItem>
             <Link href="/faq" passHref>
               <FooterLink>F.A.Q</FooterLink>
-            </Link>
-          </FooterLinksMenuItem>
-          <FooterLinksMenuItem>
-            <Link href="/contact" passHref>
-              <FooterLink>Contact</FooterLink>
             </Link>
           </FooterLinksMenuItem>
         </FooterLinksMenu>

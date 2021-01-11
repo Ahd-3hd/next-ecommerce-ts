@@ -212,11 +212,10 @@ export const MobileMenu = ({ toggleMenu }) => {
     { href: "/shop", text: "Shop" },
     { href: "/blog", text: "Blog" },
     { href: "/faq", text: "F.A.Q" },
-    { href: "/contact", text: "Contact" },
   ]);
   useEffect(() => {
     setActiveLink(router.pathname);
-  }, []);
+  }, [router]);
   return (
     <MobileMenuList toggleMenu={toggleMenu}>
       {links.map((item) => (
@@ -239,13 +238,12 @@ export const DesktopMenu = () => {
     { href: "/shop", text: "Shop" },
     { href: "/blog", text: "Blog" },
     { href: "/faq", text: "F.A.Q" },
-    { href: "/contact", text: "Contact" },
   ]);
   const [activeLink, setActiveLink] = useState("/");
 
   useEffect(() => {
     setActiveLink(router.pathname);
-  }, []);
+  }, [router]);
   return (
     <DesktopMenuList>
       {links.map((item) => (
