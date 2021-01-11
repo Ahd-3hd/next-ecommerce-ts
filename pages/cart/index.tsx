@@ -32,7 +32,7 @@ const Cart = ({ products }) => {
   };
   const calculateSubTotal = () => {
     const total = items.reduce((acc, item) => {
-      return (acc += parseInt(item.price));
+      return (acc += parseInt(item.price) * item.quantity);
     }, 0);
 
     return total;
@@ -40,6 +40,17 @@ const Cart = ({ products }) => {
 
   const afterTax = () => {
     return calculateSubTotal() + 15;
+  };
+
+  const handleChangeQuantity = (e, id) => {
+    setItems((prevState) =>
+      prevState.map((item) => {
+        if (item.id === id) {
+          item.quantity = e.target.value;
+        }
+        return item;
+      })
+    );
   };
   return (
     <>
@@ -59,15 +70,17 @@ const Cart = ({ products }) => {
                     <ProductMetaText>Size: {item.size}</ProductMetaText>
                     <ProductMetaText>Brand: {item.brand}</ProductMetaText>
                   </ProductMeta>
-                  <Quantity>
-                    <QuantityOption>1</QuantityOption>
-                    <QuantityOption>2</QuantityOption>
-                    <QuantityOption>3</QuantityOption>
-                    <QuantityOption>4</QuantityOption>
-                    <QuantityOption>5</QuantityOption>
-                    <QuantityOption>6</QuantityOption>
-                    <QuantityOption>7</QuantityOption>
-                    <QuantityOption>8</QuantityOption>
+                  <Quantity onChange={(e) => handleChangeQuantity(e, item.id)}>
+                    <QuantityOption value="1">1</QuantityOption>
+                    <QuantityOption value="2">2</QuantityOption>
+                    <QuantityOption value="3">3</QuantityOption>
+                    <QuantityOption value="4">4</QuantityOption>
+                    <QuantityOption value="5">5</QuantityOption>
+                    <QuantityOption value="6">6</QuantityOption>
+                    <QuantityOption value="7">7</QuantityOption>
+                    <QuantityOption value="8">8</QuantityOption>
+                    <QuantityOption value="9">9</QuantityOption>
+                    <QuantityOption value="10">10</QuantityOption>
                   </Quantity>
                 </Details>
                 <PriceRemove>
@@ -83,7 +96,7 @@ const Cart = ({ products }) => {
             <PriceBreakdownContainer>
               <PriceRow>
                 <PriceKey>Subtotal</PriceKey>
-                <PriceValue>{calculateSubTotal()}</PriceValue>
+                <PriceValue>${calculateSubTotal()}</PriceValue>
               </PriceRow>
               <PriceRow>
                 <PriceKey>Tax</PriceKey>
@@ -105,7 +118,12 @@ const Cart = ({ products }) => {
 export default Cart;
 
 export async function getServerSideProps(context) {
-  const products = dummyProducts.filter((item, i) => i < 4);
+  const products = dummyProducts
+    .filter((item, i) => i < 4)
+    .map((item) => ({
+      ...item,
+      quantity: 1,
+    }));
   return {
     props: {
       products,
