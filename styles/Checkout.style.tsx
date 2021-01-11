@@ -3,7 +3,10 @@ import styled from "styled-components";
 export const Wrapper = styled.div`
   margin-bottom: 2rem;
 `;
-export const Title = styled.h1``;
+export const Title = styled.h1`
+  color: ${({ theme: { colors } }) => colors.primary};
+  text-align: center;
+`;
 
 export const Container = styled.div`
   display: grid;
@@ -13,7 +16,11 @@ export const Container = styled.div`
   }
 `;
 export const Column = styled.div``;
-export const BillingForm = styled.form``;
+export const BillingForm = styled.form`
+  button {
+    display: none;
+  }
+`;
 
 export const FormRow = styled.div`
   display: flex;

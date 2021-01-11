@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import {
   Wrapper,
   Container,
@@ -29,6 +29,7 @@ import dummyProducts from "../../dummy/dummyProducts.json";
 
 const Checkout = ({ products }) => {
   const [items, setItems] = useState(products);
+  const formButtonRef = useRef(null);
 
   const calculateSubTotal = () => {
     const total = items.reduce((acc, item) => {
@@ -125,6 +126,9 @@ const Checkout = ({ products }) => {
                   <InputField type="text" required placeholder="Mobile Phone" />
                 </InputGroup>
               </FormRow>
+              <button type="submit" ref={formButtonRef}>
+                inside
+              </button>
             </BillingForm>
           </Column>
           <Column>
@@ -164,7 +168,9 @@ const Checkout = ({ products }) => {
               Your Personal are not proccessed because this is a preview website
               and not a real store.
             </NoticeParagraph>
-            <PlaceOrderButton>Place Order</PlaceOrderButton>
+            <PlaceOrderButton onClick={() => formButtonRef?.current?.click()}>
+              Place Order
+            </PlaceOrderButton>
           </Column>
         </Container>
       </Wrapper>
