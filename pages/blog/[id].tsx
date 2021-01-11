@@ -55,7 +55,10 @@ const BlogPage = ({ data }) => {
 export default BlogPage;
 
 export async function getServerSideProps(context) {
-  const data = dummyContent[context.query.id];
+  const data = dummyContent.find(
+    (item) => item.id === parseInt(context.query.id)
+  );
+
   return {
     props: {
       data,
