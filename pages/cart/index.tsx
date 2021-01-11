@@ -20,6 +20,7 @@ import {
   PriceRow,
   PriceKey,
   PriceValue,
+  CheckoutButton,
 } from "../../styles/Cart.style";
 import dummyProducts from "../../dummy/dummyProducts.json";
 
@@ -90,9 +91,10 @@ const Cart = ({ products }) => {
               </PriceRow>
               <PriceRow>
                 <PriceKey>Total</PriceKey>
-                <PriceValue>{afterTax()}</PriceValue>
+                <PriceValue>${afterTax()}</PriceValue>
               </PriceRow>
             </PriceBreakdownContainer>
+            <CheckoutButton>Proceed to Checkout</CheckoutButton>
           </Column>
         </Container>
       </Wrapper>
