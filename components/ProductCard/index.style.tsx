@@ -6,7 +6,11 @@ export const Container = styled.a`
   display: flex;
   flex-direction: column;
   margin: 1.7rem 0;
-  box-shadow: 0px 0px 4px ${({ theme: { colors } }) => colors.grey};
+  box-shadow: 0px 0px 4px ${({ theme: { colors } }) => `${colors.primary}10`};
+  transition: box-shadow 0.3s ease-in-out;
+  :hover {
+    box-shadow: 0px 5px 10px ${({ theme: { colors } }) => `${colors.primary}10`};
+  }
 `;
 
 export const Img = styled.div<{ url: string }>`
