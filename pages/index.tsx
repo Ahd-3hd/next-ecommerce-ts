@@ -1,10 +1,10 @@
 import Head from "next/head";
-import NewHeader from "../components/NewHeader";
 import ProductsShowcase from "../components/ProductsShowcase";
 import CollectionSection from "../components/CollectionSection";
 import Brands from "../components/Brands";
 import BlogSection from "../components/BlogSection";
 import dummyProducts from "../dummy/dummyProducts.json";
+import HeaderThree from "../components/HeaderThree";
 
 export default function Home({ products }) {
   return (
@@ -12,7 +12,7 @@ export default function Home({ products }) {
       <Head>
         <title>Home</title>
       </Head>
-      <NewHeader />
+      <HeaderThree />
       <ProductsShowcase products={products} title="New Arrivals" />
       <CollectionSection />
       <Brands />
