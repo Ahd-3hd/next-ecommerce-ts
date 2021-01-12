@@ -1,5 +1,5 @@
 import Head from "next/head";
-import Header from "../components/Header";
+import NewHeader from "../components/NewHeader";
 import ProductsShowcase from "../components/ProductsShowcase";
 import CollectionSection from "../components/CollectionSection";
 import Brands from "../components/Brands";
@@ -12,7 +12,7 @@ export default function Home({ products }) {
       <Head>
         <title>Home</title>
       </Head>
-      <Header />
+      <NewHeader />
       <ProductsShowcase products={products} title="New Arrivals" />
       <CollectionSection />
       <Brands />

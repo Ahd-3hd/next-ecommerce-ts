@@ -2,7 +2,6 @@ import styled from "styled-components";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
-import UserIcon from "../../svg/UserIcon.svg";
 import FavoriteIcon from "../../svg/FavoriteIcon.svg";
 import CartIcon from "../../svg/CartIcon.svg";
 
@@ -261,7 +260,6 @@ export const DesktopMenu = () => {
 
 export const UserButtons = () => {
   const [links] = useState([
-    { href: "/profile", icon: UserIcon },
     { href: "/favorites", icon: FavoriteIcon },
     { href: "/cart", icon: CartIcon },
   ]);
