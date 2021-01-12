@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 export const Wrapper = styled.div`
   margin-top: 2rem;
@@ -12,7 +12,27 @@ export const Title = styled.p`
   font-weight: 600;
 `;
 
-export const Container = styled.div`
+const animateCardsIn = keyframes`
+  from{
+    transform:scale(0.95)
+  }
+
+  to{
+    transform:scale(1)
+  }
+`;
+
+const animateCardsOut = keyframes`
+  from{
+    transform:scale(1)
+  }
+
+  to{
+    transform:scale(0.95)
+  }
+`;
+
+export const Container = styled.div<{ isVisible: boolean }>`
   @media (min-width: ${({ theme: { breakpoints } }) => breakpoints.md}) {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -22,6 +42,11 @@ export const Container = styled.div`
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-gap: 2rem;
+  }
+  > * {
+    animation: ${({ isVisible }) =>
+        isVisible ? animateCardsIn : animateCardsOut}
+      1s ease-in-out forwards;
   }
 `;
 
