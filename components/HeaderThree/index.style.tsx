@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.header`
-  min-height: 100vh;
+  min-height: 80vh;
   position: relative;
   display: flex;
   align-items: center;
@@ -15,16 +15,26 @@ export const Background = styled.div`
   background: ${({ theme: { colors } }) => `${colors.secondary}22`};
   right: 10%;
   z-index: 1;
+  @media (max-width: ${({ theme: { breakpoints } }) => breakpoints.md}) {
+    background: ${({ theme: { colors } }) => `${colors.secondary}05`};
+  }
 `;
 
 export const Card = styled.div`
   flex: 1;
-  height: 65vh;
+  min-height: 600px;
   background: #fff;
   z-index: 2;
   box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
   display: flex;
   position: relative;
+  @media (max-width: ${({ theme: { breakpoints } }) => breakpoints.md}) {
+    flex-direction: column-reverse;
+    min-height: auto;
+    padding-bottom: 2rem;
+    margin-top: 2rem;
+    max-width: 600px;
+  }
 `;
 
 export const ImageSection = styled.div`
@@ -44,6 +54,10 @@ export const ImageSection = styled.div`
     opacity: 0.8;
     min-width: 300px;
   }
+  @media (max-width: ${({ theme: { breakpoints } }) => breakpoints.md}) {
+    margin-right: 0;
+    overflow: hidden;
+  }
 `;
 
 export const Img = styled.img`
@@ -54,6 +68,10 @@ export const Img = styled.img`
   bottom: 0;
   z-index: 1;
   min-width: 300px;
+  @media (max-width: ${({ theme: { breakpoints } }) => breakpoints.md}) {
+    position: relative;
+    bottom: -1rem;
+  }
 `;
 
 export const WhiteSection = styled.div`
@@ -73,6 +91,9 @@ export const Title = styled.p`
   color: ${({ theme: { colors } }) => colors.primary};
   > span {
     color: ${({ theme: { colors } }) => colors.secondary};
+  }
+  @media (max-width: ${({ theme: { breakpoints } }) => breakpoints.md}) {
+    font-size: 2rem;
   }
 `;
 
@@ -94,6 +115,10 @@ export const SocialContainer = styled.div`
   top: 0;
   height: 4rem;
   width: 100%;
+  @media (max-width: ${({ theme: { breakpoints } }) => breakpoints.md}) {
+    position: static;
+    margin-bottom: 2rem;
+  }
 `;
 export const HorizontalLine = styled.div`
   border: 1px solid ${({ theme: { colors } }) => `${colors.primary}33`};
