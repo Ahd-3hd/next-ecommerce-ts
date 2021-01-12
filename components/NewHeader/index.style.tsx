@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 export const Wrapper = styled.header`
   height: 100vh;
@@ -15,6 +15,7 @@ export const GreySide = styled.div`
   background: ${({ theme: { colors } }) => colors.grey};
   height: 100%;
   flex: 1;
+  position: relative;
 `;
 export const ModelImg = styled.img`
   width: 78%;
@@ -33,6 +34,28 @@ export const WhiteSide = styled.div`
   padding: 4rem 0;
 `;
 
+const textAfterAnim = keyframes`
+    0%{
+        transform: translateX(100%);
+
+    }
+    50%{
+        transform: translateX(0%);
+    }
+    100%{
+        transform: translateX(-100%);
+        opacity:none;
+    }
+`;
+
+const textContentAnim = keyframes`
+    from{
+        opacity:0;
+    }
+    to{
+        opacity:1;
+    }
+`;
 export const TextContainer = styled.div`
   color: ${({ theme: { colors } }) => colors.primary};
   font-weight: 900;
@@ -40,8 +63,27 @@ export const TextContainer = styled.div`
   padding: 0.5rem;
   border-left: 3px solid ${({ theme: { colors } }) => colors.primary};
   margin-top: 1rem;
+  position: relative;
+  overflow: hidden;
+  > p {
+    animation: ${textContentAnim} 0.5s ease-in-out forwards;
+    animation-delay: 1.5s;
+    opacity: 0;
+  }
   @media (min-width: ${({ theme: { breakpoints } }) => breakpoints.md}) {
     font-size: 2.5rem;
+  }
+  ::after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: ${({ theme: { colors } }) => colors.primary};
+    top: 0;
+    left: 0;
+    transform: translateX(100%);
+    animation: ${textAfterAnim} 1s ease-in-out forwards;
+    animation-delay: 1s;
   }
 `;
 
@@ -109,17 +151,15 @@ export const WhiteSideCircle = styled.div`
 
 export const GreySidecircle = styled.div`
   display: none;
-  width: 200px;
-  height: 200px;
   border: 35px solid ${({ theme: { colors } }) => colors.primary};
-  border-radius: 200px;
   position: absolute;
-  top: 0.5rem;
   z-index: 8;
   @media (min-width: ${({ theme: { breakpoints } }) => breakpoints.md}) {
     display: block;
-    width: 260px;
-    height: 260px;
-    right: 0;
+    left: 0;
+    top: 0;
+    width: 230px;
+    height: 230px;
+    border-radius: 230px;
   }
 `;

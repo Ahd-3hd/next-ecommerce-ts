@@ -30,15 +30,17 @@ const NewHeader = () => {
             commodo consequat. Duis aute irure dolor in reprehenderit in
             voluptate velit esse cillum dolore eu fugiat nulla pariatur.
           </Paragraph>
-          <ShopButton>
-            Start Shopping <ArrowRightICon />
-          </ShopButton>
+          <Link href="/shop" passHref>
+            <ShopButton>
+              Start Shopping <ArrowRightICon />
+            </ShopButton>
+          </Link>
           <WhiteSideCircle />
         </WhiteSide>
         <GreySide>
-          <ModelImg src="/imgs/headernew.png" alt="model" />
           <GreySidecircle />
         </GreySide>
+        <ModelImg src="/imgs/headernew.png" alt="model" />
       </Container>
     </Wrapper>
   );
