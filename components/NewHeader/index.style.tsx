@@ -17,6 +17,17 @@ export const GreySide = styled.div`
   flex: 1;
   position: relative;
 `;
+
+const ModelImgAnim = keyframes`
+    from{
+        opacity:0;
+        transform:translateX(-100%)
+    }
+    to{
+        opacity:1;
+        transform: translateY(0)
+    }
+`;
 export const ModelImg = styled.img`
   width: 78%;
   max-width: 350px;
@@ -24,6 +35,8 @@ export const ModelImg = styled.img`
   bottom: 0;
   right: 0;
   z-index: 9;
+  opacity: 0;
+  animation: ${ModelImgAnim} 1s ease-in-out forwards;
   @media (min-width: ${({ theme: { breakpoints } }) => breakpoints.md}) {
     right: 20%;
   }
