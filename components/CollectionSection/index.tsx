@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { useState, useEffect, useRef } from "react";
 import {
   Wrapper,
   Container,
@@ -15,10 +16,25 @@ const img2 =
   "https://images.unsplash.com/photo-1572172793409-c3db4a0ca8df?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=634&q=80";
 
 const CollectionSection = () => {
+  const wrapperRef = useRef<HTMLDivElement>();
+  const [isVisible, setIsVisible] = useState(false);
+
+  const handleObserver = (entries: IntersectionObserverEntry[]) => {
+    entries.forEach((entry) => setIsVisible(entry.isIntersecting));
+  };
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(handleObserver, {
+      threshold: 0.4,
+    });
+    if (wrapperRef && wrapperRef.current) {
+      observer.observe(wrapperRef.current);
+    }
+  }, []);
   return (
-    <Wrapper>
-      <Container img={img1}></Container>
-      <Container img={img2}></Container>
+    <Wrapper ref={wrapperRef} isVisible={isVisible}>
+      <Container img={img1} className="container"></Container>
+      <Container img={img2} className="container"></Container>
       <Card>
         <CardTitle>Winter Collection</CardTitle>
         <CardParagraph>
