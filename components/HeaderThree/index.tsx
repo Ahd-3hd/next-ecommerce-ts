@@ -12,6 +12,7 @@ import {
   HorizontalLine,
   SocialLinksContainer,
   SocialLink,
+  TitleOverlay,
 } from "./index.style";
 import Link from "next/link";
 import FacebookIcon from "../../svg/FacebookIcon.svg";
@@ -29,6 +30,7 @@ const HeaderThree = () => {
             <Title>
               Black & <span>Rose</span> <br /> Collection
             </Title>
+            <TitleOverlay />
           </TitleContainer>
           <Link href="/shop" passHref>
             <ShopButton>START SHOPPING</ShopButton>

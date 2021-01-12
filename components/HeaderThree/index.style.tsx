@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 export const Wrapper = styled.header`
   min-height: 80vh;
@@ -37,10 +37,20 @@ export const Card = styled.div`
   }
 `;
 
+const animImgAfter = keyframes`
+  from{
+    transform:translateY(100%);
+  }
+  to:{
+    transform:translateY(0);
+  }
+`;
+
 export const ImageSection = styled.div`
   flex: 1;
   margin-right: 10%;
   position: relative;
+  overflow: hidden;
   ::after {
     content: "";
     position: absolute;
@@ -53,6 +63,8 @@ export const ImageSection = styled.div`
     mix-blend-mode: multiply;
     opacity: 0.8;
     min-width: 300px;
+    animation: ${animImgAfter} 1s ease-in-out forwards;
+    animation-delay: 1s;
   }
   @media (max-width: ${({ theme: { breakpoints } }) => breakpoints.md}) {
     margin-right: 0;
@@ -82,8 +94,37 @@ export const WhiteSection = styled.div`
   justify-content: center;
   align-items: flex-start;
 `;
+
+const titleAnimAfter = keyframes`
+  0%{
+    transform:translateX(110%);
+  }
+  50%{
+    transform:translateX(0);
+  }
+  100%{
+    transform:translateX(-110%);
+
+  }
+`;
+
+const titleAnim = keyframes`
+  0%{
+    visibility:hidden;
+  }
+  50%{
+    visibility:hidden;
+  }
+  100%{
+    visibility:visible;
+  }
+`;
+
 export const TitleContainer = styled.div`
   margin-left: 10%;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 0.5rem;
 `;
 export const Title = styled.p`
   font-weight: 900;
@@ -95,6 +136,21 @@ export const Title = styled.p`
   @media (max-width: ${({ theme: { breakpoints } }) => breakpoints.md}) {
     font-size: 2rem;
   }
+  visibility: hidden;
+  animation: ${titleAnim} 1.5s ease-in-out forwards;
+  animation-delay: 1.3s;
+`;
+
+export const TitleOverlay = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: translateX(110%);
+  background: ${({ theme: { colors } }) => colors.primary};
+  animation: ${titleAnimAfter} 1s ease-in-out forwards;
+  animation-delay: 1.5s;
 `;
 
 export const ShopButton = styled.a`
@@ -108,6 +164,11 @@ export const ShopButton = styled.a`
   justify-content: center;
   text-align: center;
   padding: 1rem 2rem;
+  transition: 0.3s ease-in-out;
+  :hover {
+    background: ${({ theme: { colors } }) => colors.primary};
+    color: #fff;
+  }
 `;
 
 export const SocialContainer = styled.div`
@@ -138,5 +199,11 @@ export const SocialLink = styled.a`
   > svg {
     fill: ${({ theme: { colors } }) => colors.primary};
     height: 1.5rem;
+    transition: fill 0.3s ease-in-out;
+  }
+  :hover {
+    > svg {
+      fill: ${({ theme: { colors } }) => colors.secondary};
+    }
   }
 `;
