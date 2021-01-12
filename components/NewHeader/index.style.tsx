@@ -94,19 +94,43 @@ export const Text = styled.p`
   }
 `;
 
+const ParagraphAfterAnim = keyframes`
+    0%{
+        transform:translateX(-100%);
+    }
+    50%{
+        transform:translateX(0)
+    }
+    100%{
+        transform:translateX(100%)
+    }
+`;
+
+const ParagraphContentAnim = keyframes`
+    from{
+        opacity:0
+    }
+    to{
+        opacity:1;
+    }
+`;
+
 export const Paragraph = styled.p`
   background: ${({ theme: { colors } }) => `${colors.primary}99`};
   padding: 0.7rem;
   color: #fff;
   font-size: 0.75rem;
-  position: absolute;
+  position: relative;
   left: 0;
   width: 80%;
   line-height: 150%;
   margin-top: 1.5rem;
   max-width: 15ch;
   z-index: 10;
-  /* height: 7rem; */
+  overflow: hidden;
+  opacity: 0;
+  animation: ${ParagraphContentAnim} 1s ease-in-out forwards;
+  animation-delay: 1s;
   @media (min-width: ${({ theme: { breakpoints } }) => breakpoints.md}) {
     left: 0;
     width: 70%;
@@ -116,11 +140,24 @@ export const Paragraph = styled.p`
     margin-top: 2rem;
     max-width: 30ch;
   }
+  ::after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    background: black;
+    top: 0;
+    right: 0;
+    position: absolute;
+    transform: translateX(-100%);
+    animation: ${ParagraphAfterAnim} 1s ease-in-out forwards;
+    animation-delay: 1s;
+  }
 `;
 
 export const ShopButton = styled.a`
+  display: inline-block;
   position: relative;
-  top: 15rem;
+  margin-top: 2rem;
   left: 0rem;
   z-index: 10;
   background: ${({ theme: { colors } }) => colors.primary};
