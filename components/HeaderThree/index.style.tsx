@@ -41,8 +41,8 @@ const animImgAfter = keyframes`
   from{
     transform:translateY(100%);
   }
-  to:{
-    transform:translateY(0);
+  to{
+    transform:translateY(0%);
   }
 `;
 
@@ -63,6 +63,7 @@ export const ImageSection = styled.div`
     mix-blend-mode: multiply;
     opacity: 0.8;
     min-width: 300px;
+    transform: translateY(100%);
     animation: ${animImgAfter} 1s ease-in-out forwards;
     animation-delay: 1s;
   }
